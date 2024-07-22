@@ -15,6 +15,10 @@
                 </a>
             </div>
 
+            <div>
+                <x-board turn="white" kifu="G4"></x-board>
+            </div>
+
             <div class="border shadow-sm sm:rounded-lg">
                 <div class="mt-4">
                     <div class="flex px-2 py-2 mb-4 bg-gray-100">
