@@ -23,17 +23,17 @@
                         <div class="pr-2 whitespace-nowrap">
                             <a href="{{ route('posts.create') }}">
                                 <x-primary-button>
-                                    イラストを投稿
+                                    棋譜を投稿
                                 </x-primary-button>
                             </a>
                         </div>
                         <x-dropdown align="right">
                             <x-slot name="trigger">
-                                <button class="inline-flex items-center px-3 py-2 w-16 border border-transparent text-sm leading-4 rounded-md text-gray-500 bg-gray-800 hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
+                                <button class="inline-flex items-center px-3 py-2 w-16 border border-transparent text-sm leading-4 rounded-md text-gray-500 hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
                                     @if(Auth::user()->avatars?->path)
                                         <img class="w-9 h-9 rounded-full my-auto" src="{{ asset('storage/' . config('image.avatar_path') . '/' . user_directory_path(Auth::user()->id) . '/' . Auth::user()->avatars->path) }}" alt="アバター" />
                                     @else
-                                        <div class="w-9 h-9 rounded-full my-auto border">
+                                        <div class="w-8 h-8 rounded-full my-auto">
                                             <img class="w-8 h-8 rounded-full m-auto" src="{{ asset('images/default_user.png') }}" alt="アバター" />
                                         </div>
                                     @endif
@@ -91,7 +91,7 @@
                         トップ
                     </x-responsive-nav-link>
                     <x-responsive-nav-link class="block sm:hidden" :href="route('posts.create')" :active="request()->routeIs('posts.create')">
-                        イラストを投稿
+                        棋譜を投稿
                     </x-responsive-nav-link>
                 @else
                     <x-responsive-nav-link :href="route('top.index')" :active="request()->routeIs('top.index')">

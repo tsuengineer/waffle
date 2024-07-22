@@ -27,7 +27,7 @@ class PasswordResetLinkController extends Controller
     {
         $request->validate(
             [
-            'email' => ['required', 'email'],
+                'email' => ['required', 'email'],
             ]
         );
 
