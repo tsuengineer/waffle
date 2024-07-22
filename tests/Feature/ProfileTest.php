@@ -27,10 +27,13 @@ class ProfileTest extends TestCase
 
         $response = $this
             ->actingAs($user)
-            ->patch('/profile', [
+            ->patch(
+                '/profile',
+                [
                 'name' => 'Test User',
                 'email' => 'test@example.com',
-            ]);
+                ]
+            );
 
         $response
             ->assertSessionHasNoErrors()
@@ -49,10 +52,13 @@ class ProfileTest extends TestCase
 
         $response = $this
             ->actingAs($user)
-            ->patch('/profile', [
+            ->patch(
+                '/profile',
+                [
                 'name' => 'Test User',
                 'email' => $user->email,
-            ]);
+                ]
+            );
 
         $response
             ->assertSessionHasNoErrors()
@@ -67,9 +73,12 @@ class ProfileTest extends TestCase
 
         $response = $this
             ->actingAs($user)
-            ->delete('/profile', [
+            ->delete(
+                '/profile',
+                [
                 'password' => 'password',
-            ]);
+                ]
+            );
 
         $response
             ->assertSessionHasNoErrors()
@@ -86,9 +95,12 @@ class ProfileTest extends TestCase
         $response = $this
             ->actingAs($user)
             ->from('/profile')
-            ->delete('/profile', [
+            ->delete(
+                '/profile',
+                [
                 'password' => 'wrong-password',
-            ]);
+                ]
+            );
 
         $response
             ->assertSessionHasErrorsIn('userDeletion', 'password')
