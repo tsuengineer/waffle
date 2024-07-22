@@ -15,12 +15,12 @@ class Preview {
      * コンストラクタ
      * @param {string} kifu 棋譜
      * @param {string} inputBoard 初期盤面
-     * @param {string} [turn='black'] 初期手番
+     * @param {string} [initTurn='black'] 初期手番
      * @param {number} [start=0] 開始位置
      */
-    constructor(kifu, inputBoard, turn = 'black', start = 0) {
-        this.initTurn = turn === 'white' ? this.WHITE_TURN : this.BLACK_TURN;
+    constructor(kifu, inputBoard, initTurn = 'black', start = 0) {
         this.inputBoard = inputBoard;
+        this.initTurn = initTurn === 'white' ? this.WHITE_TURN : this.BLACK_TURN;
         this.initBoard(this.inputBoard);
         this.inputKifu = kifu ?? '';
         this.moveTotalCount = this.inputKifu.length / 2;
@@ -33,7 +33,6 @@ class Preview {
      * @param {string} inputBoard 初期盤面
      */
     initBoard(inputBoard) {
-        this.nowTurn = this.BLACK_TURN;
         this.currentKifu = '';
 
         if (inputBoard !== '') {
@@ -60,7 +59,12 @@ class Preview {
             this.opponentBoard = 0x0000001008000000n;
         }
 
-        this.nowTurn = this.initTurn === 'white' ? this.WHITE_TURN : this.BLACK_TURN;
+        if (this.initTurn === this.WHITE_TURN) {
+            this.swapBoard();
+            this.nowTurn = this.WHITE_TURN;
+        } else {
+            this.nowTurn = this.BLACK_TURN;
+        }
     }
 
     /**
@@ -443,6 +447,7 @@ class Preview {
      * @param {string} kifu 棋譜
      */
     makeBoard(kifu) {
+        console.log(kifu)
         this.initBoard(this.inputBoard);
         this.currentKifu = kifu;
         const length = this.currentKifu.length / 2;
@@ -472,6 +477,7 @@ class Preview {
                         break;
                     }
                 } else {
+                    alert(x + y)
                     alert('Error: Invalid move without pass.');
                     this.initBoard(this.inputBoard);
                     break;
@@ -497,6 +503,9 @@ class Preview {
     moveNext() {
         this.currentMoveCount = this.incrementMoveCount(this.currentMoveCount);
         this.currentKifu = this.inputKifu.substring(0, this.currentMoveCount * 2);
+        console.log(this.currentKifu)
+        console.log(this.currentMoveCount)
+        console.log(this.nowTurn)
         this.makeBoard(this.currentKifu);
         this.drawBoard();
     }

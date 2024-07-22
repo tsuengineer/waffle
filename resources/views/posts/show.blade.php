@@ -16,7 +16,7 @@
             </div>
 
             <div>
-                <x-board turn="white" kifu="G4"></x-board>
+                <x-board turn="black" kifu="E2G4F3" start="2"></x-board>
             </div>
 
             <div class="border shadow-sm sm:rounded-lg">
