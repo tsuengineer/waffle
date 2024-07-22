@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 class PostFactory extends Factory
 {
@@ -11,6 +12,7 @@ class PostFactory extends Factory
     {
         return [
             'user_id' => User::factory(),
+            'ulid' => Str::ulid(),
             'title' => $this->faker->sentence,
             'init_board' => '-OOO----X-XO-O---XOOO-X-OOXOXX--OOOXXXX-OOXXXXX-O-XOOX---X-OO-X-', // Example initial board
             'kifu' => $this->faker->regexify('[A-H][1-8]{4}'), // Random moves
