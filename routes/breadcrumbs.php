@@ -17,6 +17,11 @@ Breadcrumbs::for('post.show', fn(BreadcrumbsTrail $trail) => [
     $trail->push('棋譜詳細')
 ]);
 
+Breadcrumbs::for('profile.show', fn(BreadcrumbsTrail $trail) => [
+    $trail->parent('top.index'),
+    $trail->push('マイページ')
+]);
+
 Breadcrumbs::for('error.index', fn(BreadcrumbsTrail $trail) => [
     $trail->parent('top.index'),
     $trail->push('エラーページ')
