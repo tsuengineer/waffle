@@ -8,7 +8,7 @@ class ShowAction
 {
     public function __invoke(string $ulid): array
     {
-        $post = Post::with('user', 'user.avatars', 'tags')
+        $post = Post::with('user', 'user.avatars', 'tags', 'comments')
             ->where('ulid', $ulid)
             ->first();
 

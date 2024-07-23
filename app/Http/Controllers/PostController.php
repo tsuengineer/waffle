@@ -19,7 +19,9 @@ class PostController extends Controller
             return response()->view('errors.404');
         }
 
-        return response()->view('posts.show', $data);
+        return response()->view('posts.show', [
+            'post' => $data['post']
+        ]);
     }
 
     public function create(): View
