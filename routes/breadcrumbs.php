@@ -16,3 +16,8 @@ Breadcrumbs::for('post.show', fn(BreadcrumbsTrail $trail) => [
     $trail->parent('post.index'),
     $trail->push('棋譜詳細')
 ]);
+
+Breadcrumbs::for('error.index', fn(BreadcrumbsTrail $trail) => [
+    $trail->parent('top.index'),
+    $trail->push('エラーページ')
+]);

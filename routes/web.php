@@ -31,4 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/posts/{ulid}', [PostController::class, 'destroy'])->name('posts.destroy');
 });
 
+// エラー
+Route::get('errors', fn() => view('errors.index'))->name('errors.index');
+
 require __DIR__.'/auth.php';
