@@ -1,7 +1,7 @@
 <div id="board" class="board-container" style="width: 100%"></div>
 <div class="button-list flex w-full space-x-4 mt-2">
-    <button class="flex-1 bg-gray-700 rounded-lg py-2" onmouseup="board.movePrev()">←戻る</button>
-    <button class="flex-1 bg-gray-700 rounded-lg py-2" onmouseup="board.moveNext()">進む⇒</button>
+    <button class="flex-1 bg-zinc-700 rounded-lg py-2" onmouseup="board.movePrev()">←戻る</button>
+    <button class="flex-1 bg-zinc-700 rounded-lg py-2" onmouseup="board.moveNext()">進む⇒</button>
 </div>
 
 @push('scripts')

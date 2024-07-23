@@ -1,5 +1,5 @@
 @section('header')
-    <nav x-data="{ open: false }" class="text-white border-b border-gray-700">
+    <nav x-data="{ open: false }" class="text-white border-b border-zinc-700">
         <!-- Primary Navigation Menu -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
@@ -29,7 +29,7 @@
                         </div>
                         <x-dropdown align="right">
                             <x-slot name="trigger">
-                                <button class="inline-flex items-center px-3 py-2 w-16 border border-transparent text-sm leading-4 rounded-md text-gray-500 hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
+                                <button class="inline-flex items-center px-3 py-2 w-16 border border-transparent text-sm leading-4 rounded-md text-zinc-500 hover:text-zinc-300 focus:outline-none transition ease-in-out duration-150">
                                     @if(Auth::user()->avatars?->path)
                                         <img class="w-9 h-9 rounded-full my-auto" src="{{ asset('storage/' . config('image.avatar_path') . '/' . user_directory_path(Auth::user()->id) . '/' . Auth::user()->avatars->path) }}" alt="アバター" />
                                     @else
@@ -62,10 +62,10 @@
                         </x-dropdown>
                     @else
                         <div class="w-36">
-                            <a href="{{ route('login') }}" class="text-sm text-gray-300 underline">ログイン</a>
+                            <a href="{{ route('login') }}" class="text-sm text-zinc-300 underline">ログイン</a>
 
                             @if (Route::has('register'))
-                                <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-300 underline">新規登録</a>
+                                <a href="{{ route('register') }}" class="ml-4 text-sm text-zinc-300 underline">新規登録</a>
                             @endif
                         </div>
                     @endauth
@@ -73,7 +73,7 @@
 
                 <!-- Hamburger -->
                 <div class="-mr-2 flex items-center">
-                    <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-gray-500 transition duration-150 ease-in-out" aria-label="ハンバーガーメニュー">
+                    <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-zinc-400 hover:text-zinc-500 hover:bg-zinc-700 focus:outline-none focus:bg-zinc-700 focus:text-zinc-500 transition duration-150 ease-in-out" aria-label="ハンバーガーメニュー">
                         <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                             <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                             <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -85,7 +85,7 @@
 
         <!-- Responsive Navigation Menu -->
         <div class="hidden" :class="{'block': open, 'hidden': ! open}">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 pt-2 pb-3 space-y-1 bg-gray-800">
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 pt-2 pb-3 space-y-1 bg-zinc-800">
                 @auth
                     <x-responsive-nav-link :href="route('top.index')" :active="request()->routeIs('top.index')">
                         トップ
@@ -101,7 +101,7 @@
             </div>
 
             <!-- Responsive Settings Options -->
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 pt-4 pb-1 border-t border-gray-700 bg-gray-800">
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 pt-4 pb-1 border-t border-zinc-700 bg-zinc-800">
                 @auth
                     <div class="mt-1 space-y-1">
                         <x-responsive-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">

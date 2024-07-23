@@ -22,7 +22,7 @@
         <div class="content" style="min-height: calc(100vh - 177px)">
             @yield('content')
         </div>
-        <footer id="footer" style="background-color: #2d3238;">
+        <footer id="footer">
             @yield('footer')
         </footer>
     </body>
