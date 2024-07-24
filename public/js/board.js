@@ -244,7 +244,7 @@ class Preview {
             y: "0",
             width: `${boardFrameSize}`,
             height: `${boardFrameSize}`,
-            fill: "#00a676",
+            fill: "#ff9b00",
             rx: "8",
         });
         boardSvg.appendChild(rect);
@@ -420,7 +420,7 @@ class Preview {
         } else if (isOpponentStone) {
             return nowTurn === this.BLACK_TURN ? "white" : "black";
         } else {
-            return "#00a676";
+            return "#ff9b00";
         }
     }
 

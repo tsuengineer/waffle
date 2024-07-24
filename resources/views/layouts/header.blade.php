@@ -7,6 +7,7 @@
                     <!-- Logo -->
                     <div class="shrink-0 flex items-center">
                         <a href="{{ route('top.index') }}" class="flex items-center">
+                            <img src="{{ asset('images/logo.png') }}" class="block h-9 w-auto fill-current text-gray-800" alt="ロゴ">
                             <p class="pl-2 font-bold">棋譜Viewer(α版)</p>
                         </a>
                     </div>
