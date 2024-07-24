@@ -41,7 +41,7 @@
                             </x-slot>
 
                             <x-slot name="content">
-                                <x-dropdown-link :href="route('users.index')" :active="request()->routeIs('dashboard')">
+                                <x-dropdown-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                                     マイページ
                                 </x-dropdown-link>
                                 <x-dropdown-link :href="route('profile.edit')">
@@ -104,7 +104,7 @@
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 pt-4 pb-1 border-t border-zinc-700 bg-zinc-800">
                 @auth
                     <div class="mt-1 space-y-1">
-                        <x-responsive-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
+                        <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('users.index')">
                             マイページ
                         </x-responsive-nav-link>
                         <x-responsive-nav-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Usecases\Profile\IndexAction;
+use App\Usecases\Profile\UpdateAction;
+use Gumlet\ImageResizeException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -29,15 +31,15 @@ class ProfileController extends Controller
         );
     }
 
-    public function update(ProfileUpdateRequest $request): RedirectResponse
+    /**
+     * @throws ImageResizeException
+     */
+    public function update(ProfileUpdateRequest $request, UpdateAction $action): RedirectResponse
     {
-        $request->user()->fill($request->validated());
+        $data = $request->validated();
+        $avatarFile = $request->file('avatar');
 
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
-        }
-
-        $request->user()->save();
+        $action($request->user(), $data, $avatarFile);
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }

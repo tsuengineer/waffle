@@ -20,7 +20,7 @@
                     <div class="sm:col-span-3 lg:col-span-2">
                         <div class="flex sm:justify-around justify-between pt-4 px-2">
                             @if ($user?->avatars?->path)
-
+                                <img class="w-20 h-20 rounded-full m-auto" src="{{ asset('storage/' . config('image.avatar_path') . '/' . user_directory_path($user->id) . '/' . $user->avatars->path) }}" alt="アバター" />
                             @else
                                 <img class="w-20 h-20 border rounded-full my-auto sm:ml-0 ml-4" src="{{ asset('images/default_user.png') }}" alt="アバター" />
                             @endif
@@ -55,7 +55,7 @@
                                     </span>
                                 @endif
                             </div>
-                            <div class="font-sm text-zinc-600">&#x40;{!! $user->slug !!}</div>
+                            <div class="text-sm text-zinc-400">&#x40;{!! $user->slug !!}</div>
                         </div>
                     </div>
 

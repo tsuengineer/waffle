@@ -13,9 +13,20 @@
         @csrf
     </form>
 
-    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
+    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6" enctype="multipart/form-data">
         @csrf
         @method('patch')
+
+        @if($user->avatars?->path)
+            <img src="{{ asset('storage/' . user_directory_path($user->id) . '/' . $user->avatars->path) }}" class="w-32 h-32" alt="アバター" />
+        @endif
+        <input type="file" name="avatar">
+
+        <div>
+            <x-input-label for="slug" value="ユーザーID" />
+            <x-text-input id="slug" name="slug" type="text" class="mt-1 block w-full" :value="old('slug', $user->slug)" pattern="[a-zA-Z0-9_-]+" required autocomplete="slug" />
+            <x-input-error class="mt-2" :messages="$errors->get('slug')" />
+        </div>
 
         <div>
             <x-input-label for="name" :value="__('Name')" class="text-zinc-100" />
@@ -45,6 +56,24 @@
                     @endif
                 </div>
             @endif
+        </div>
+{{$errors}}
+        <div>
+            <x-input-label for="x_account" value="X ID" />
+            <x-text-input id="x_account" name="x_account" type="text" class="mt-1 block w-full" :value="old('x_account', $user->x_account)" placeholder="x_account" autocomplete="x_account" />
+            <x-input-error class="mt-2" :messages="$errors->get('x_account')" />
+        </div>
+
+        <div>
+            <x-input-label for="instagram_account" value="Instagram ID" />
+            <x-text-input id="instagram_account" name="instagram_account" type="text" class="mt-1 block w-full" :value="old('instagram_account', $user->instagram_account)" placeholder="instagram_account" autocomplete="instagram_account" />
+            <x-input-error class="mt-2" :messages="$errors->get('instagram_account')" />
+        </div>
+
+        <div>
+            <x-input-label for="profile" value="自己紹介" />
+            <x-form.input-textarea id="profile" name="profile" type="text" class="mt-1 block w-full" :value="old('profile', $user->profile)" autocomplete="profile" />
+            <x-input-error class="mt-2" :messages="$errors->get('profile')" />
         </div>
 
         <div class="flex items-center gap-4">
