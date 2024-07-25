@@ -57,7 +57,7 @@
                 </div>
             @endif
         </div>
-{{$errors}}
+
         <div>
             <x-input-label for="x_account" value="X ID" />
             <x-text-input id="x_account" name="x_account" type="text" class="mt-1 block w-full" :value="old('x_account', $user->x_account)" placeholder="x_account" autocomplete="x_account" />

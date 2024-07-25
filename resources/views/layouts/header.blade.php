@@ -62,11 +62,15 @@
                             </x-slot>
                         </x-dropdown>
                     @else
-                        <div class="w-36">
-                            <a href="{{ route('login') }}" class="text-sm text-zinc-300 underline">ログイン</a>
+                        <div class="flex h-full mr-2">
+                            <a href="{{ route('login') }}" class="{{ request()->routeIs('login') ? 'font-bold text-zinc-200 border-b-2 border-amber-500' : 'text-zinc-200' }} flex text-sm items-center px-3 hover:bg-zinc-900 h-full whitespace-nowrap">
+                                ログイン
+                            </a>
 
                             @if (Route::has('register'))
-                                <a href="{{ route('register') }}" class="ml-4 text-sm text-zinc-300 underline">新規登録</a>
+                                <a href="{{ route('register') }}" class="{{ request()->routeIs('register') ? 'font-bold text-zinc-200 border-b-2 border-amber-500' : 'text-zinc-200' }} flex text-sm items-center px-3 hover:bg-zinc-900 h-full whitespace-nowrap">
+                                    新規登録
+                                </a>
                             @endif
                         </div>
                     @endauth
