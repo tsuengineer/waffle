@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Usecases\Post\IndexAction;
 use App\Usecases\Post\ShowAction;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -21,6 +22,19 @@ class PostController extends Controller
 
         return response()->view('posts.show', [
             'post' => $data['post']
+        ]);
+    }
+
+    public function index(IndexAction $action): Response
+    {
+        $data = $action();
+
+        if (!$data) {
+            return response()->view('errors.404');
+        }
+
+        return response()->view('posts.index', [
+            'posts' => $data['posts']
         ]);
     }
 

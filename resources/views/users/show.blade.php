@@ -91,7 +91,7 @@
                         <div class="text-zinc-600">
                             <ul>
                                 @foreach ($posts as $post)
-                                    <li class="p-4 text-zinc-200">
+                                    <li class="p-4 text-zinc-200 border-b border-zinc-800">
                                         <div class="flex mb-2">
                                             <a href="{{ route('users.show', ['userSlug' => $post->user->slug]) }}" class="pr-2">
                                                 <div>

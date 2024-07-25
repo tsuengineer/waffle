@@ -37,7 +37,7 @@
                     </div>
 
                     <div class="p-4 bg-zinc-800 rounded-lg text-zinc-200">
-                        <h2 class="text-lg font-bold">人気の棋譜</h2>
+                        <h2 class="text-lg font-bold">ランダムの棋譜</h2>
                         <ul class="mt-2">
                             <!-- ランダムの棋譜のリストを表示 -->
                             @foreach ($randomPosts ?? [] as $post)
@@ -50,7 +50,7 @@
                     </div>
 
                     <div class="p-4 bg-zinc-800 rounded-lg text-zinc-200">
-                        <h2 class="text-lg font-bold">注目のユーザー</h2>
+                        <h2 class="text-lg font-bold">新着のユーザー</h2>
                         <ul class="mt-2">
                             <!-- 新着のユーザーのリストを表示 -->
                             @foreach ($latestUsers ?? [] as $user)
@@ -62,7 +62,7 @@
                                     @endif
                                     <div class="ml-4">
                                         <a href="{{ route('users.show', $user->slug) }}" class="text-blue-400 hover:underline">{{ $user->name }}</a>
-                                        <p class="text-zinc-400 text-sm">{{ count($user->posts) }} 投稿</p>
+                                        <p class="text-zinc-400 text-sm">投稿数: {{ count($user->posts) }}</p>
                                     </div>
                                 </li>
                             @endforeach
