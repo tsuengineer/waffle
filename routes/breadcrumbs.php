@@ -17,6 +17,16 @@ Breadcrumbs::for('post.show', fn(BreadcrumbsTrail $trail) => [
     $trail->push('棋譜詳細')
 ]);
 
+Breadcrumbs::for('user.index', fn(BreadcrumbsTrail $trail) => [
+    $trail->parent('top.index'),
+    $trail->push('ユーザ一覧', route('users.index'))
+]);
+
+Breadcrumbs::for('user.show', fn(BreadcrumbsTrail $trail) => [
+    $trail->parent('user.index'),
+    $trail->push('ユーザ詳細')
+]);
+
 Breadcrumbs::for('profile.show', fn(BreadcrumbsTrail $trail) => [
     $trail->parent('top.index'),
     $trail->push('マイページ')

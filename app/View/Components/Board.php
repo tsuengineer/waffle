@@ -13,7 +13,7 @@ class Board extends Component
 
     public function __construct($kifu = null, $initBoard = null, $turn = 'black', $start = 0)
     {
-        $this->kifu = $kifu ?? 'G4';
+        $this->kifu = $kifu ?? '';
         $this->initBoard = $initBoard ?? '';
         $this->turn = $turn;
         $this->start = $start;

@@ -85,6 +85,7 @@
             </div>
 
             @if (count($posts) !== 0)
+                <h2 class="py-2 font-bold">投稿した棋譜</h2>
                 <div class="bg-zinc-900 overflow-hidden border border-zinc-800 sm:rounded">
                     <div>
                         <div class="text-zinc-600">
@@ -92,7 +93,7 @@
                                 @foreach ($posts as $post)
                                     <li class="p-4 text-zinc-200">
                                         <div class="flex mb-2">
-                                            <a href="#" class="pr-2">
+                                            <a href="{{ route('users.show', ['userSlug' => $post->user->slug]) }}" class="pr-2">
                                                 <div>
                                                     @if ($post->user?->avatars?->path)
                                                         <img class="w-8 h-8 rounded-full m-auto" src="{{ asset('storage/' . config('image.avatar_path') . '/' . user_directory_path($user->id) . '/' . $user->avatars->path) }}" alt="アバター" />
@@ -103,12 +104,12 @@
                                             </a>
                                             <div>
                                                 <p>
-                                                    <a href="#" class="text-sm">
+                                                    <a href="{{ route('users.show', ['userSlug' => $post->user->slug]) }}" class="text-sm">
                                                         &#x40;{{ $post->user->slug }}<span>({{ $post->user->name }})</span>
                                                     </a>
                                                 </p>
                                                 <span class="text-xs text-zinc-400">
-                                                    <time>2024年07月22日</time>
+                                                    <time>{{ $post->user->created_at }}</time>
                                                 </span>
                                             </div>
                                         </div>
