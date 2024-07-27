@@ -31,7 +31,7 @@
                                         </a>
                                     </p>
                                     <span class="text-xs text-zinc-400">
-                                        <time>{{ $user->created_at }}</time>
+                                        <time>{{ $user->created_at->format('Y年n月j日') }}</time>
                                     </span>
                                 </div>
                             </div>

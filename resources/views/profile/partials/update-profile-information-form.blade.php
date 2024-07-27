@@ -24,13 +24,13 @@
 
         <div>
             <x-input-label for="slug" value="ユーザーID" />
-            <x-text-input id="slug" name="slug" type="text" class="mt-1 block w-full" :value="old('slug', $user->slug)" pattern="[a-zA-Z0-9_-]+" required autocomplete="slug" />
+            <x-text-input id="slug" name="slug" type="text" class="mt-1 block w-full" :value="old('slug', $user->slug)" pattern="[a-zA-Z0-9_-]+" required autofocus autocomplete="slug" />
             <x-input-error class="mt-2" :messages="$errors->get('slug')" />
         </div>
 
         <div>
             <x-input-label for="name" :value="__('Name')" class="text-zinc-100" />
-            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full bg-zinc-700 text-zinc-100" :value="old('name', $user->name)" required autofocus autocomplete="name" />
+            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full bg-zinc-700 text-zinc-100" :value="old('name', $user->name)" required autocomplete="name" />
             <x-input-error class="mt-2 text-red-500" :messages="$errors->get('name')" />
         </div>
 

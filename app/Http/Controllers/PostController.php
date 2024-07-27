@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post;
+use App\Http\Requests\Post\StoreRequest;
 use App\Usecases\Post\IndexAction;
 use App\Usecases\Post\ShowAction;
+use App\Usecases\Post\StoreAction;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\View\View;
 
 class PostController extends Controller
 {
@@ -38,14 +37,20 @@ class PostController extends Controller
         ]);
     }
 
-    public function create(): View
+    public function create(): Response
     {
-
+        return response()->view('posts.create');
     }
 
-    public function store()
+    public function store(StoreRequest $request, StoreAction $action): RedirectResponse
     {
+        $result = $action($request);
 
+        if ($result->isSuccess()) {
+            return redirect()->action([ProfileController::class, 'show'])->with('success', '棋譜の投稿が成功しました。');
+        } else {
+            return back()->withErrors($result->getErrors())->withInput();
+        }
     }
 
     public function edit()

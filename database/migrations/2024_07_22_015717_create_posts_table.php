@@ -13,11 +13,12 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->ulid('ulid')->unique()->comment('ULID');
             $table->string('title');
-            $table->string('init_board');
-            $table->string('kifu');
-            $table->integer('start_move');
-            $table->string('black_user_name');
-            $table->string('white_user_name');
+            $table->string('init_board')->nullable();
+            $table->string('kifu')->nullable();
+            $table->string('init_turn')->default('black');
+            $table->integer('start_move')->default(0);
+            $table->string('black_user_name')->nullable();
+            $table->string('white_user_name')->nullable();
             $table->text('begin_text')->nullable();
             $table->text('end_text')->nullable();
             $table->timestamps();

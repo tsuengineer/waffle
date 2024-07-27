@@ -447,7 +447,6 @@ class Preview {
      * @param {string} kifu 棋譜
      */
     makeBoard(kifu) {
-        console.log(kifu)
         this.initBoard(this.inputBoard);
         this.currentKifu = kifu;
         const length = this.currentKifu.length / 2;
@@ -503,9 +502,6 @@ class Preview {
     moveNext() {
         this.currentMoveCount = this.incrementMoveCount(this.currentMoveCount);
         this.currentKifu = this.inputKifu.substring(0, this.currentMoveCount * 2);
-        console.log(this.currentKifu)
-        console.log(this.currentMoveCount)
-        console.log(this.nowTurn)
         this.makeBoard(this.currentKifu);
         this.drawBoard();
     }

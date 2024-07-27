@@ -10,9 +10,9 @@
         document.addEventListener("DOMContentLoaded", function() {
             const kifu = "{{ $kifu ?? '' }}";
             const initBoard = "{{ $initBoard ?? '' }}";
-            const turn = "{{ $turn ?? '' }}";
+            const initTurn = "{{ $initTurn ?? 'black' }}";
             const start = "{{ $start ?? 0 }}";
-            window.board = new Preview(kifu, initBoard, turn, Number(start));
+            window.board = new Preview(kifu, initBoard, initTurn, Number(start));
 
             board.makeBoard(board.currentKifu);
             board.drawBoard();

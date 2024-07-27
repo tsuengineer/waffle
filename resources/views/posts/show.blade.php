@@ -34,7 +34,7 @@
                         {!! $post['begin_text'] !!}
                     </div>
                     <div class="">
-                        <x-board turn="black" kifu="{{ $post['kifu'] }}" start="{{ $post['start_move'] }}"></x-board>
+                        <x-board kifu="{{ $post['kifu'] }}" initTurn="{{ $post['init_turn'] }}" start="{{ $post['start_move'] }}"></x-board>
                     </div>
                 </div>
 
