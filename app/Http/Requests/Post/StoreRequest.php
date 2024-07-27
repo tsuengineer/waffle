@@ -19,7 +19,7 @@ class StoreRequest extends FormRequest
         return [
             'title' => ['required', 'string', 'max:100'],
             'initBoard' => ['nullable', 'string', 'size:64', 'regex:/^[OX-]+$/'],
-            'kifu' => ['nullable', 'string', 'regex:/^([a-hA-H][1-8])+$/', 'max:60'],
+            'kifu' => ['nullable', 'string', 'regex:/^([a-hA-H][1-8])+$/', 'max:120'],
             'initTurn' => ['required', 'in:black,white'],
             'startMove' => ['nullable', 'integer', 'min:0', 'max:' . $kifuLength],
             'blackUserName' => ['nullable', 'string', 'max:20'],
