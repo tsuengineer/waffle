@@ -40,7 +40,7 @@ class StoreRequest extends FormRequest
             'initBoard.size' => '初期盤面は64文字である必要があります。',
             'initBoard.regex' => '初期盤面は「O」、「X」、または「-」で構成される必要があります。',
             'kifu.regex' => '棋譜は正しい形式で入力してください。',
-            'kifu.max' => '棋譜は60文字以内で入力してください。',
+            'kifu.max' => '棋譜は120文字以内で入力してください。',
             'kifu.even_length' => '棋譜の文字数は偶数である必要があります。',
             'initTurn.required' => '手番を選択してください。',
             'initTurn.in' => '手番は黒番または白番である必要があります。',
