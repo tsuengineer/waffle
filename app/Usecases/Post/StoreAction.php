@@ -15,6 +15,7 @@ class StoreAction
     public function __invoke(StoreRequest $request): ResponseUtil
     {
         $data = $request->validated();
+        $post = null;
 
         try {
             $post = Post::create([
@@ -39,7 +40,7 @@ class StoreAction
                 $post->tags()->sync($tags->pluck('id'));
             }
         } catch (\Exception $e) {
-            if (isset($post)) {
+            if (!is_null($post)) {
                 $post->delete();
             }
             Log::error('Failed to save post.', ['exception' => $e]);

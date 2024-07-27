@@ -52,19 +52,4 @@ class PostController extends Controller
             return back()->withErrors($result->getErrors())->withInput();
         }
     }
-
-    public function edit()
-    {
-
-    }
-
-    public function update(): RedirectResponse
-    {
-
-    }
-
-    public function destroy()
-    {
-
-    }
 }
