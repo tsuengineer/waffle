@@ -64,12 +64,6 @@
                         <x-input-error class="mt-2" :messages="$errors->get('startMove')" />
                     </div>
 
-                    <div>
-                        <x-form.toggle-button name="ai" :value="old('ai', '1')">
-                            終盤20マス空きで評価値を表示<span class="ml-1 text-xs text-amber-600">β版で実装</span>
-                        </x-form.toggle-button>
-                    </div>
-
                     <div class="sm:col-span-2">
                         <x-input-label for="comments" value="コメント" /><span class="ml-1 text-xs text-amber-600">β版で実装</span>
                         <x-form.input-textarea id="comments" name="comments" type="text" class="mt-1 block w-full" :value="old('comments')" maxlength="10000" autocomplete="comments" rows="8" />

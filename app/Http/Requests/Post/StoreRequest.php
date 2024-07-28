@@ -24,7 +24,7 @@ class StoreRequest extends FormRequest
             'startMove' => ['nullable', 'integer', 'min:0', 'max:' . $kifuLength],
             'blackUserName' => ['nullable', 'string', 'max:20'],
             'whiteUserName' => ['nullable', 'string', 'max:20'],
-            'comments' => ['nullable', 'string', 'max:10000', 'regex:/^(?:[0-9]|[1-5][0-9]|60):.{0,100}(\r?\n|$)+$/'],
+            'comments' => ['nullable', 'string', 'max:10000', 'regex:/^(?:([0-9]|[1-5][0-9]|60):.{0,100})(?:\r?\n)?$/m'],
             'beginText' => ['nullable', 'string', 'max:10000'],
             'endText' => ['nullable', 'string', 'max:10000'],
             'tags' => ['nullable', 'array', 'max:10'],

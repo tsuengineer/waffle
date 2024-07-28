@@ -22,8 +22,10 @@ class Board extends Component
     public function render()
     {
         return view('components.othello.board', [
+            'kifu' => $this->kifu,
             'initBoard' => $this->initBoard,
             'initTurn' => $this->initTurn,
+            'start' => $this->start,
         ]);
     }
 }

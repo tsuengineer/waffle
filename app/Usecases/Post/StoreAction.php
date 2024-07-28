@@ -3,6 +3,7 @@
 namespace App\Usecases\Post;
 
 use App\Http\Requests\Post\StoreRequest;
+use App\Models\Comment;
 use App\Models\Post;
 use App\Models\Tag;
 use App\Utils\ResponseUtil;
@@ -18,6 +19,7 @@ class StoreAction
         $post = null;
 
         try {
+            // postsテーブル
             $post = Post::create([
                 'user_id' => Auth::id(),
                 'ulid' => Str::ulid(),
@@ -32,12 +34,28 @@ class StoreAction
                 'end_text' => $data['endText'],
             ]);
 
+            // tagsテーブル
             if (!empty($data['tags']) && is_array($data['tags'])) {
                 $tags = collect($data['tags'])->filter()->map(function ($tagName) {
                     return Tag::query()->firstOrCreate(['name' => $tagName]);
                 });
 
                 $post->tags()->sync($tags->pluck('id'));
+            }
+
+            // commentsテーブル
+            if (!empty($data['comments'])) {
+                $commentLines = explode("\n", trim($data['comments']));
+
+                foreach ($commentLines as $commentLine) {
+                    [$moves, $text] = explode(':', $commentLine, 2);
+
+                    Comment::query()->create([
+                        'post_id' => $post->id,
+                        'moves' => (int) $moves,
+                        'text' => trim($text),
+                    ]);
+                }
             }
         } catch (\Exception $e) {
             if (!is_null($post)) {

@@ -30,12 +30,20 @@
                             @endforeach
                         </div>
                     @endif
-                    <div class="my-4 p-2 bg-zinc-900 text-zinc-300 text-sm">
-                        {!! $post['begin_text'] !!}
-                    </div>
+
+                    @if (!empty($post['begin_text']))
+                        <div class="my-4 p-2 bg-zinc-900 text-zinc-300 text-sm">
+                            {!! $post['begin_text'] !!}
+                        </div>
+                    @endif
                     <div class="">
                         <x-board kifu="{{ $post['kifu'] }}" initTurn="{{ $post['init_turn'] }}" start="{{ $post['start_move'] }}"></x-board>
                     </div>
+                    @if (!empty($post['end_text']))
+                        <div class="my-4 p-2 bg-zinc-900 text-zinc-300 text-sm">
+                            {!! $post['end_text'] !!}
+                        </div>
+                    @endif
                 </div>
 
                 <div id="board-relative-area" class="mt-8 md:mt-0 w-full md:w-1/3">
