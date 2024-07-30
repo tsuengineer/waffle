@@ -4,8 +4,9 @@ namespace App\Http\Requests\Post;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
-class StoreRequest extends FormRequest
+class UpdateRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -18,6 +19,7 @@ class StoreRequest extends FormRequest
         $commentRegex = '/^(?:([0-9]|[1-5][0-9]|60):.{0,100})(?:\r?\n)?$/m';
 
         return [
+            'ulid' => ['required', 'string'],
             'title' => ['required', 'string', 'max:100'],
             'initBoard' => ['nullable', 'string', 'size:64', 'regex:/^[OX-]+$/'],
             'kifu' => ['nullable', 'string', 'regex:/^([a-hA-H][1-8])+$/', 'max:120'],
@@ -32,6 +34,16 @@ class StoreRequest extends FormRequest
             'tags.*' => ['nullable', 'string', 'max:20'],
             'ai' => ['nullable', 'boolean']
         ];
+    }
+
+    public function validationData()
+    {
+        return array_merge(
+            parent::validationData(),
+            [
+                'ulid' => Route::input('ulid')
+            ],
+        );
     }
 
     public function messages()

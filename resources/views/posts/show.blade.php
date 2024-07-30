@@ -11,6 +11,11 @@
 
             <div class="md:flex md:space-x-4">
                 <div id="board-area" class="w-full md:w-2/3">
+                    @if ($post->user_id === Auth::user()->id)
+                        <x-secondary-button class="hidden sm:block">
+                            <a href="{{ route('posts.edit', ['ulid' => $post->ulid]) }}">棋譜情報を編集</a>
+                        </x-secondary-button>
+                    @endif
                     <div class="flex justify-between items-center">
                         <div class="font-semibold overflow-hidden truncate text-lg sm:text-2xl w-9/12 md:w-10/12">{{ $post->title }}</div>
                         <a class="flex items-center justify-evenly w-24 py-1 my-1 mr-1 rounded shadow text-sm text-white bg-blue-500 hover:bg-blue-400">
