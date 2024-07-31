@@ -23,12 +23,22 @@ class ResponseUtil
         return new self(true);
     }
 
+    public static function deleteSuccess(): self
+    {
+        return new self(true);
+    }
+
     public static function createWithErrors(array $errors): self
     {
         return new self(false, $errors);
     }
 
     public static function updateWithErrors(array $errors): self
+    {
+        return new self(false, $errors);
+    }
+
+    public static function deleteWithErrors(array $errors): self
     {
         return new self(false, $errors);
     }

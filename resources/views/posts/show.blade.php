@@ -11,7 +11,7 @@
 
             <div class="md:flex md:space-x-4">
                 <div id="board-area" class="w-full md:w-2/3">
-                    @if ($post->user_id === Auth::user()->id)
+                    @if ($post->user_id === Auth::user()?->id ?? '')
                         <x-secondary-button class="hidden sm:block">
                             <a href="{{ route('posts.edit', ['ulid' => $post->ulid]) }}">棋譜情報を編集</a>
                         </x-secondary-button>

@@ -15,6 +15,12 @@
                 </x-text.aside>
             @endif
 
+            @if (session('error'))
+                <x-text.aside type="error" class="mb-4 mx-2">
+                    {{ session('error') }}
+                </x-text.aside>
+            @endif
+
             <div class="mb-8 py-4 bg-zinc-900 overflow-hidden border border-zinc-800 sm:rounded">
                 <div class="sm:flex sm:grid sm:grid-cols-10">
                     <div class="sm:col-span-3 lg:col-span-2">
@@ -91,43 +97,66 @@
                         <div class="text-zinc-600">
                             <ul>
                                 @foreach ($posts as $post)
-                                    <li class="p-4 text-zinc-200">
-                                        <div class="flex mb-2">
-                                            <a href="{{ route('users.show', ['userSlug' => $post->user->slug]) }}" class="pr-2">
+                                    <li class="p-4 text-zinc-200 flex justify-between items-center">
+                                        <div>
+                                            <div class="flex mb-2">
+                                                <a href="{{ route('users.show', ['userSlug' => $post->user->slug]) }}" class="pr-2">
+                                                    <div>
+                                                        @if ($post->user?->avatars?->path)
+                                                            <img class="w-8 h-8 rounded-full m-auto" src="{{ asset('storage/' . config('image.avatar_path') . '/' . user_directory_path($user->id) . '/' . $user->avatars->path) }}" alt="アバター" />
+                                                        @else
+                                                            <img class="w-8 h-8 border rounded-full my-auto sm:ml-0 ml-4" src="{{ asset('images/default_user.png') }}" alt="アバター" />
+                                                        @endif
+                                                    </div>
+                                                </a>
                                                 <div>
-                                                    @if ($post->user?->avatars?->path)
-                                                        <img class="w-8 h-8 rounded-full m-auto" src="{{ asset('storage/' . config('image.avatar_path') . '/' . user_directory_path($user->id) . '/' . $user->avatars->path) }}" alt="アバター" />
-                                                    @else
-                                                        <img class="w-8 h-8 border rounded-full my-auto sm:ml-0 ml-4" src="{{ asset('images/default_user.png') }}" alt="アバター" />
-                                                    @endif
-                                                </div>
-                                            </a>
-                                            <div>
-                                                <p>
-                                                    <a href="{{ route('users.show', ['userSlug' => $post->user->slug]) }}" class="text-sm">
-                                                        &#x40;{{ $post->user->slug }}<span>({{ $post->user->name }})</span>
-                                                    </a>
-                                                </p>
-                                                <span class="text-xs text-zinc-400">
+                                                    <p>
+                                                        <a href="{{ route('users.show', ['userSlug' => $post->user->slug]) }}" class="text-sm">
+                                                            &#x40;{{ $post->user->slug }}<span>({{ $post->user->name }})</span>
+                                                        </a>
+                                                    </p>
+                                                    <span class="text-xs text-zinc-400">
                                                     <time>{{ $post->user->created_at->format('Y年n月j日') }}</time>
                                                 </span>
+                                                </div>
+                                            </div>
+                                            <h2 class="text-lg py-2 font-bold">
+                                                <a href="/posts/{{ $post->ulid }}">
+                                                    {{ $post->title }}
+                                                </a>
+                                            </h2>
+                                            <div>
+                                                @if (!empty($post->tags))
+                                                    <div class="flex my-2">
+                                                        @foreach ($post->tags as $tag)
+                                                            <div class="mr-1 px-2 rounded bg-zinc-700 text-zinc-400 text-sm">
+                                                                {{ $tag->name }}
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
+                                                @endif
                                             </div>
                                         </div>
-                                        <h2 class="text-lg py-2 font-bold">
-                                            <a href="/posts/{{ $post->ulid }}">
-                                                {{ $post->title }}
-                                            </a>
-                                        </h2>
-                                        <div>
-                                            @if (!empty($post->tags))
-                                                <div class="flex my-2">
-                                                    @foreach ($post->tags as $tag)
-                                                        <div class="mr-1 px-2 rounded bg-zinc-700 text-zinc-400 text-sm">
-                                                            {{ $tag->name }}
-                                                        </div>
-                                                    @endforeach
-                                                </div>
-                                            @endif
+
+                                        <div class="flex">
+                                            <div class="flex flex-col mx-1 w-12">
+                                                <x-secondary-button class="m-1 w-full text-center">↑</x-secondary-button>
+                                                <x-secondary-button class="m-1 w-full text-center">↓</x-secondary-button>
+                                            </div>
+                                            <div class="flex flex-col sm:flex-row mx-1 sm:w-36 w-16">
+                                                <x-secondary-button class="m-1 w-full text-center">
+                                                    <a href="{{ route('posts.edit', ['ulid' => $post->ulid]) }}">
+                                                        編集
+                                                    </a>
+                                                </x-secondary-button>
+                                                <form id="delete-form-{{ $post->ulid }}" action="{{ route('posts.destroy', ['ulid' => $post->ulid]) }}" method="POST" style="display: none;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                </form>
+                                                <x-danger-button class="m-1 w-full text-center delete-button" data-id="{{ $post->ulid }}">
+                                                    削除
+                                                </x-danger-button>
+                                            </div>
                                         </div>
                                     </li>
                                 @endforeach
@@ -141,3 +170,22 @@
     </div>
 @endsection
 @include('layouts.footer')
+
+@push('scripts')
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const deleteButtons = document.querySelectorAll('.delete-button');
+
+            deleteButtons.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    const ulid = this.getAttribute('data-id');
+                    const form = document.getElementById(`delete-form-${ulid}`);
+
+                    if (form && confirm('本当に削除しますか？')) {
+                        form.submit();
+                    }
+                });
+            });
+        });
+    </script>
+@endpush

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Post\DestroyRequest;
 use App\Http\Requests\Post\EditRequest;
 use App\Http\Requests\Post\StoreRequest;
 use App\Http\Requests\Post\UpdateRequest;
+use App\Usecases\Post\DestroyAction;
 use App\Usecases\Post\EditAction;
 use App\Usecases\Post\IndexAction;
 use App\Usecases\Post\ShowAction;
@@ -84,6 +86,17 @@ class PostController extends Controller
             return redirect()->action([ProfileController::class, 'show'])->with('success', '棋譜情報の編集が成功しました。');
         } else {
             return back()->withErrors($result->getErrors())->withInput();
+        }
+    }
+
+    public function destroy(DestroyRequest $request, DestroyAction $action): RedirectResponse
+    {
+        $result = $action($request);
+
+        if ($result->isSuccess()) {
+            return redirect()->action([ProfileController::class, 'show'])->with('success', '棋譜の削除が成功しました。');
+        } else {
+            return redirect()->action([ProfileController::class, 'show'])->with('error', '棋譜の削除に失敗しました。');
         }
     }
 }

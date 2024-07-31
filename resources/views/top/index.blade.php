@@ -23,7 +23,7 @@
 
             <div class="mb-8 py-4 bg-zinc-900 overflow-hidden border border-zinc-800 sm:rounded">
                 <div class="sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
-                    <div class="p-4 bg-zinc-800 rounded-lg text-zinc-200">
+                    <div class="p-4 mb-4 sm:mb-0 bg-zinc-800 rounded-lg text-zinc-200">
                         <h2 class="text-lg font-bold">新着棋譜</h2>
                         <ul class="mt-2">
                             <!-- 新着棋譜のリストを表示 -->
@@ -36,7 +36,7 @@
                         </ul>
                     </div>
 
-                    <div class="p-4 bg-zinc-800 rounded-lg text-zinc-200">
+                    <div class="p-4 mb-4 sm:mb-0 bg-zinc-800 rounded-lg text-zinc-200">
                         <h2 class="text-lg font-bold">ランダムの棋譜</h2>
                         <ul class="mt-2">
                             <!-- ランダムの棋譜のリストを表示 -->

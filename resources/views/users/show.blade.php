@@ -25,7 +25,7 @@
                                 <img class="w-20 h-20 border rounded-full my-auto sm:ml-0 ml-4" src="{{ asset('images/default_user.png') }}" alt="アバター" />
                             @endif
 
-                            @if ($user->id === Auth::user()?->id)
+                            @if ($user->id === Auth::user()?->id ?? '')
                                 <div>
                                     <x-secondary-button class="hidden sm:block">
                                         <a href="{{ route('profile.edit') }}">編集</a>
