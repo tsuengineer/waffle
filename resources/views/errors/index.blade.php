@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="pt-4 pb-12">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="mb-8">
                 {{ Breadcrumbs::render('error.index') }}
             </div>

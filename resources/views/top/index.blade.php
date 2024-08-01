@@ -28,9 +28,16 @@
                         <ul class="mt-2">
                             <!-- 新着棋譜のリストを表示 -->
                             @foreach ($latestPosts ?? [] as $post)
-                                <li class="mb-2">
-                                    <a href="{{ route('posts.show', $post->ulid) }}" class="text-blue-400 hover:underline">{{ $post->title }}</a>
-                                    <p class="text-zinc-400 text-sm">{{ $post->created_at->format('Y年n月j日') }}</p>
+                                <li class="mb-2 flex items-center">
+                                    @if ($post->user?->avatars?->path)
+                                        <img class="w-8 h-8 rounded-full my-auto sm:ml-0 ml-4" src="{{ asset('storage/' . config('image.avatar_path') . '/' . user_directory_path($post->user->id) . '/' . $post->user?->avatars?->path) }}" alt="アバター" />
+                                    @else
+                                        <img class="w-8 h-8 border rounded-full my-auto sm:ml-0 ml-4" src="{{ asset('images/default_user.png') }}" alt="アバター" />
+                                    @endif
+                                    <div class="ml-4">
+                                        <a href="{{ route('posts.show', $post->ulid) }}" class="text-blue-400 hover:underline">{{ $post->title }}</a>
+                                        <p class="text-zinc-400 text-xs">{{ $post->created_at->format('Y年n月j日') }}</p>
+                                    </div>
                                 </li>
                             @endforeach
                         </ul>
@@ -41,9 +48,16 @@
                         <ul class="mt-2">
                             <!-- ランダムの棋譜のリストを表示 -->
                             @foreach ($randomPosts ?? [] as $post)
-                                <li class="mb-2">
-                                    <a href="{{ route('posts.show', $post->ulid) }}" class="text-blue-400 hover:underline">{{ $post->title }}</a>
-                                    <p class="text-zinc-400 text-sm">{{ $post->created_at->format('Y年n月j日') }}</p>
+                                <li class="mb-2 flex items-center">
+                                    @if ($post->user?->avatars?->path)
+                                        <img class="w-8 h-8 rounded-full my-auto sm:ml-0 ml-4" src="{{ asset('storage/' . config('image.avatar_path') . '/' . user_directory_path($post->user->id) . '/' . $post->user?->avatars?->path) }}" alt="アバター" />
+                                    @else
+                                        <img class="w-8 h-8 border rounded-full my-auto sm:ml-0 ml-4" src="{{ asset('images/default_user.png') }}" alt="アバター" />
+                                    @endif
+                                    <div class="ml-4">
+                                        <a href="{{ route('posts.show', $post->ulid) }}" class="text-blue-400 hover:underline">{{ $post->title }}</a>
+                                        <p class="text-zinc-400 text-xs">{{ $post->created_at->format('Y年n月j日') }}</p>
+                                    </div>
                                 </li>
                             @endforeach
                         </ul>
@@ -56,7 +70,7 @@
                             @foreach ($latestUsers ?? [] as $user)
                                 <li class="mb-2 flex items-center">
                                     @if ($user?->avatars?->path)
-                                        <img class="w-8 h-8 rounded-full my-auto" src="{{ asset('storage/' . config('image.avatar_path') . '/' . user_directory_path($user->id) . '/' . $user->avatars->path) }}" alt="アバター" />
+                                        <img class="w-8 h-8 rounded-full my-auto sm:ml-0 ml-4" src="{{ asset('storage/' . config('image.avatar_path') . '/' . user_directory_path($user->id) . '/' . $user->avatars->path) }}" alt="アバター" />
                                     @else
                                         <img class="w-8 h-8 border rounded-full my-auto sm:ml-0 ml-4" src="{{ asset('images/default_user.png') }}" alt="アバター" />
                                     @endif
@@ -82,7 +96,7 @@
                         <li><a href="#" class="text-blue-400 hover:underline">基本的な戦略</a></li>
                         <li><a href="#" class="text-blue-400 hover:underline">中盤の戦術</a></li>
                         <li><a href="#" class="text-blue-400 hover:underline">終盤の攻略法</a></li>
-                        <li><a href="#" class="text-blue-400 hover:underline">高段者同士の試合の分析</a></li>
+                        <li><a href="#" class="text-blue-400 hover:underline">実力者同士の試合の分析</a></li>
                     </ul>
                 </div>
             </div>
@@ -103,3 +117,4 @@
         </div>
     </div>
 @endsection
+@include('layouts.footer')

@@ -19,7 +19,7 @@
         <header id="header">
             @yield('header')
         </header>
-        <div class="content" style="min-height: calc(100vh - 177px)">
+        <div class="content" style="min-height: calc(100vh - 170px)">
             @yield('content')
         </div>
         <footer id="footer">
