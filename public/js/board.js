@@ -10,6 +10,8 @@ class Preview {
     currentKifu;
     currentMoveCount;
     moveTotalCount;
+    blackUserName;
+    whiteUserName;
 
     /**
      * コンストラクタ
@@ -17,8 +19,10 @@ class Preview {
      * @param {string} inputBoard 初期盤面
      * @param {string} [initTurn='black'] 初期手番
      * @param {number} [start=0] 開始位置
+     * @param {string} [blackUserName=''] 黒番ユーザー名
+     * @param {string} [whiteUserName=''] 白番ユーザー名
      */
-    constructor(kifu, inputBoard, initTurn = 'black', start = 0) {
+    constructor(kifu, inputBoard, initTurn = 'black', start = 0, blackUserName, whiteUserName) {
         this.inputBoard = inputBoard;
         this.initTurn = initTurn === 'white' ? this.WHITE_TURN : this.BLACK_TURN;
         this.initBoard(this.inputBoard);
@@ -26,6 +30,8 @@ class Preview {
         this.moveTotalCount = this.inputKifu.length / 2;
         this.currentMoveCount = start;
         this.currentKifu = kifu.substr(0, start * 2);
+        this.blackUserName = blackUserName;
+        this.whiteUserName = whiteUserName;
     }
 
     /**
@@ -347,7 +353,7 @@ class Preview {
 
         for (let i = 0; i < 2; i++) {
             const cell = this.createSvgElement("circle", {
-                cx: String(100 * i + 80),
+                cx: String(290 * i + 60),
                 cy: "705",
                 fill: i === 0 ? "#333" : "#fff",
                 r: "20",
@@ -355,7 +361,7 @@ class Preview {
             boardSvg.appendChild(cell);
 
             const turnMarker = this.createSvgElement("circle", {
-                cx: String(100 * i + 40),
+                cx: String(290 * i + 20),
                 cy: "705",
                 fill: i === 0 && this.nowTurn === this.BLACK_TURN || i === 1 && this.nowTurn === this.WHITE_TURN ? "#fefd68" : "#ccc",
                 r: "8",
@@ -363,7 +369,7 @@ class Preview {
             boardSvg.appendChild(turnMarker);
 
             const text = this.createSvgElement("text", {
-                x: String(100 * i + 80),
+                x: String(290 * i + 60),
                 y: "712",
                 "text-anchor": "middle",
                 fill: i === 0 ? "#fff" : "#333",
@@ -375,11 +381,46 @@ class Preview {
                 text.textContent = `${i === 0 ? this.bitCount(this.opponentBoard) : this.bitCount(this.playerBoard)}`;
             }
             boardSvg.appendChild(text);
+
+            const userName = this.createSvgElement("text", {
+                x: String(290 * i + 90),
+                y: "712",
+                "text-anchor": "left",
+                fill: "#333",
+            });
+            if (i % 2 === 0) {
+                const nameLength = this.blackUserName.length;
+                let fontSize;
+
+                if (nameLength <= 10) {
+                    fontSize = '22';
+                } else if (nameLength <= 15) {
+                    fontSize = '16';
+                } else {
+                    fontSize = '12';
+                }
+                userName.setAttribute('font-size', fontSize);
+                userName.textContent = this.blackUserName;
+            } else {
+                const nameLength = this.whiteUserName.length;
+                let fontSize;
+
+                if (nameLength <= 10) {
+                    fontSize = '22';
+                } else if (nameLength <= 15) {
+                    fontSize = '16';
+                } else {
+                    fontSize = '12';
+                }
+                userName.setAttribute('font-size', fontSize);
+                userName.textContent = this.whiteUserName;
+            }
+            boardSvg.appendChild(userName);
         }
 
         // 手数
         const moveCountText = this.createSvgElement("text", {
-            x: "350",
+            x: "600",
             y: "712",
             "text-anchor": "middle",
             fill: "#333",
@@ -390,7 +431,7 @@ class Preview {
 
         // 最終手の座標
         const moveText = this.createSvgElement("text", {
-            x: "400",
+            x: "630",
             y: "712",
             "text-anchor": "middle",
             fill: "#333",

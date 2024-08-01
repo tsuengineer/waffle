@@ -12,7 +12,9 @@
             const initBoard = "{{ $initBoard ?? '' }}";
             const initTurn = "{{ $initTurn ?? 'black' }}";
             const start = "{{ $start ?? 0 }}";
-            window.board = new Preview(kifu, initBoard, initTurn, Number(start));
+            const blackUserName = "{{ $blackUserName ?? '' }}";
+            const whiteUserName = "{{ $whiteUserName ?? '' }}";
+            window.board = new Preview(kifu, initBoard, initTurn, Number(start), blackUserName, whiteUserName);
 
             board.makeBoard(board.currentKifu);
             board.drawBoard();

@@ -48,13 +48,13 @@
                     </div>
 
                     <div>
-                        <x-input-label for="blackUserName" value="黒番ユーザ名" /><span class="ml-1 text-xs text-amber-600">β版で実装</span>
+                        <x-input-label for="blackUserName" value="黒番ユーザ名" />
                         <x-text-input id="blackUserName" name="blackUserName" type="text" class="mt-1 block w-full" :value="old('blackUserName', $post->black_user_name)" placeholder="user1" maxlength="20" autocomplete="blackUserName" />
                         <x-input-error class="mt-2" :messages="$errors->get('blackUserName')" />
                     </div>
 
                     <div>
-                        <x-input-label for="whiteUserName" value="白番ユーザ名" /><span class="ml-1 text-xs text-amber-600">β版で実装</span>
+                        <x-input-label for="whiteUserName" value="白番ユーザ名" />
                         <x-text-input id="whiteUserName" name="whiteUserName" type="text" class="mt-1 block w-full" :value="old('whiteUserName', $post->white_user_name)" placeholder="user2" maxlength="20" autocomplete="whiteUserName" />
                         <x-input-error class="mt-2" :messages="$errors->get('whiteUserName')" />
                     </div>

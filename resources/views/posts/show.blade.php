@@ -42,7 +42,13 @@
                         </div>
                     @endif
                     <div class="">
-                        <x-board kifu="{{ $post['kifu'] }}" initTurn="{{ $post['init_turn'] }}" start="{{ $post['start_move'] }}"></x-board>
+                        <x-board
+                            kifu="{{ $post['kifu'] }}"
+                            initTurn="{{ $post['init_turn'] }}"
+                            start="{{ $post['start_move'] }}"
+                            blackUserName="{{ $post['black_user_name'] }}"
+                            whiteUserName="{{ $post['white_user_name'] }}"
+                        ></x-board>
                     </div>
                     @if (!empty($post['end_text']))
                         <div class="my-4 p-2 bg-zinc-900 text-zinc-300 text-sm">
