@@ -93,10 +93,10 @@
                         以下のセクションでは、初心者から上級者まで役立つ情報を提供しています。
                     </p>
                     <ul class="list-disc list-inside mt-4 text-zinc-400">
+                        <li><a href="#" class="text-blue-400 hover:underline">定石集</a></li>
                         <li><a href="#" class="text-blue-400 hover:underline">基本的な戦略</a></li>
                         <li><a href="#" class="text-blue-400 hover:underline">中盤の戦術</a></li>
                         <li><a href="#" class="text-blue-400 hover:underline">終盤の攻略法</a></li>
-                        <li><a href="#" class="text-blue-400 hover:underline">実力者同士の試合の分析</a></li>
                     </ul>
                 </div>
             </div>
