@@ -97,7 +97,7 @@
                         <div class="text-zinc-600">
                             <ul>
                                 @foreach ($posts as $post)
-                                    <li class="p-4 text-zinc-200 flex justify-between items-center">
+                                    <li class="p-4 text-zinc-200 border-b border-zinc-800 flex justify-between items-center">
                                         <div>
                                             <div class="flex mb-2">
                                                 <a href="{{ route('users.show', ['userSlug' => $post->user->slug]) }}" class="pr-2">
@@ -140,9 +140,33 @@
 
                                         <div class="flex">
                                             <div class="flex flex-col mx-1 w-12">
-                                                <x-secondary-button class="m-1 w-full text-center">↑</x-secondary-button>
-                                                <x-secondary-button class="m-1 w-full text-center">↓</x-secondary-button>
+                                                <x-secondary-button
+                                                    class="m-1 w-full text-center"
+                                                    onclick="event.preventDefault(); document.getElementById('sort-up-form-{{ $post->ulid }}').submit();"
+                                                >
+                                                    ↑
+                                                </x-secondary-button>
+                                                <form id="sort-up-form-{{ $post->ulid }}"
+                                                      action="{{ route('posts.move_up', ['ulid' => $post->ulid]) }}"
+                                                      method="POST" style="display: none;">
+                                                    @csrf
+                                                    @method('PUT')
+                                                </form>
+
+                                                <x-secondary-button
+                                                    class="m-1 w-full text-center"
+                                                    onclick="event.preventDefault(); document.getElementById('sort-down-form-{{ $post->ulid }}').submit();"
+                                                >
+                                                    ↓
+                                                </x-secondary-button>
+                                                <form id="sort-down-form-{{ $post->ulid }}"
+                                                      action="{{ route('posts.move_down', ['ulid' => $post->ulid]) }}"
+                                                      method="POST" style="display: none;">
+                                                    @csrf
+                                                    @method('PUT')
+                                                </form>
                                             </div>
+
                                             <div class="flex flex-col sm:flex-row mx-1 sm:w-36 w-16">
                                                 <x-secondary-button class="m-1 w-full text-center">
                                                     <a href="{{ route('posts.edit', ['ulid' => $post->ulid]) }}">

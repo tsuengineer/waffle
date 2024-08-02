@@ -17,6 +17,7 @@ class StoreAction
     {
         $data = $request->validated();
         $post = null;
+        $postCount = Post::query()->where('user_id', Auth::id())->count();
 
         try {
             // postsテーブル
@@ -32,6 +33,7 @@ class StoreAction
                 'white_user_name' => $data['whiteUserName'],
                 'begin_text' => $data['beginText'],
                 'end_text' => $data['endText'],
+                'sort' => $postCount + 1,
             ]);
 
             // tagsテーブル

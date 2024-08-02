@@ -23,6 +23,7 @@ class Post extends Model
         'white_user_name',
         'begin_text',
         'end_text',
+        'sort',
     ];
 
     public function user(): BelongsTo

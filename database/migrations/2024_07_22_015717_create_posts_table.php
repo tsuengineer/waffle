@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('white_user_name')->nullable();
             $table->text('begin_text')->nullable();
             $table->text('end_text')->nullable();
+            $table->integer('sort');
             $table->timestamps();
         });
     }

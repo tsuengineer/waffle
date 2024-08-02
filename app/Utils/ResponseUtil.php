@@ -28,6 +28,11 @@ class ResponseUtil
         return new self(true);
     }
 
+    public static function moveSuccess(): self
+    {
+        return new self(true);
+    }
+
     public static function createWithErrors(array $errors): self
     {
         return new self(false, $errors);
@@ -39,6 +44,11 @@ class ResponseUtil
     }
 
     public static function deleteWithErrors(array $errors): self
+    {
+        return new self(false, $errors);
+    }
+
+    public static function moveWithErrors(array $errors): self
     {
         return new self(false, $errors);
     }

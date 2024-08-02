@@ -18,7 +18,7 @@ class ShowAction
         }
 
         $posts = $user->posts()
-            ->orderBy('created_at', 'desc')
+            ->orderBy('sort')
             ->paginate(40);
 
         return [

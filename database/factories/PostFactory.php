@@ -21,6 +21,7 @@ class PostFactory extends Factory
             'white_user_name' => $this->faker->name,
             'begin_text' => $this->faker->paragraph,
             'end_text' => $this->faker->paragraph,
+            'sort' => $this->faker->randomNumber(),
         ];
     }
 }

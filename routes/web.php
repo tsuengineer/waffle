@@ -26,6 +26,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/posts/{ulid}/edit', [PostController::class, 'edit'])->name('posts.edit');
     Route::put('/posts/{ulid}', [PostController::class, 'update'])->name('posts.update');
     Route::delete('/posts/{ulid}', [PostController::class, 'destroy'])->name('posts.destroy');
+    Route::put('/posts/{ulid}/move-up', [PostController::class, 'moveUp'])->name('posts.move_up');
+    Route::put('/posts/{ulid}/move-down', [PostController::class, 'moveDown'])->name('posts.move_down');
+
 });
 
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');

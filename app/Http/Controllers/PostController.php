@@ -4,11 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Post\DestroyRequest;
 use App\Http\Requests\Post\EditRequest;
+use App\Http\Requests\Post\MoveDownRequest;
+use App\Http\Requests\Post\MoveUpRequest;
 use App\Http\Requests\Post\StoreRequest;
 use App\Http\Requests\Post\UpdateRequest;
 use App\Usecases\Post\DestroyAction;
 use App\Usecases\Post\EditAction;
 use App\Usecases\Post\IndexAction;
+use App\Usecases\Post\MoveDownAction;
+use App\Usecases\Post\MoveUpAction;
 use App\Usecases\Post\ShowAction;
 use App\Usecases\Post\StoreAction;
 use App\Usecases\Post\UpdateAction;
@@ -97,6 +101,28 @@ class PostController extends Controller
             return redirect()->action([ProfileController::class, 'show'])->with('success', '棋譜の削除が成功しました。');
         } else {
             return redirect()->action([ProfileController::class, 'show'])->with('error', '棋譜の削除に失敗しました。');
+        }
+    }
+
+    public function moveUp(MoveUpRequest $request, MoveUpAction $action): RedirectResponse
+    {
+        $result = $action($request);
+
+        if ($result->isSuccess()) {
+            return redirect()->action([ProfileController::class, 'show'])->with('success', '棋譜順序の更新が成功しました。');
+        } else {
+            return redirect()->action([ProfileController::class, 'show'])->with('error', '棋譜順序の更新に失敗しました。');
+        }
+    }
+
+    public function moveDown(MoveDownRequest $request, MoveDownAction $action): RedirectResponse
+    {
+        $result = $action($request);
+
+        if ($result->isSuccess()) {
+            return redirect()->action([ProfileController::class, 'show'])->with('success', '棋譜順序の更新が成功しました。');
+        } else {
+            return redirect()->action([ProfileController::class, 'show'])->with('error', '棋譜順序の更新に失敗しました。');
         }
     }
 }
