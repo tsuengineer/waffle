@@ -18,7 +18,7 @@
         @method('patch')
 
         @if($user->avatars?->path)
-            <img src="{{ asset('storage/' . user_directory_path($user->id) . '/' . $user->avatars->path) }}" class="w-32 h-32" alt="アバター" />
+            <img src="{{ asset('storage/' . config('image.avatar_path') . '/' . user_directory_path($user->id) . '/' . $user->avatars->path) }}" class="w-32 h-32" alt="アバター" />
         @endif
         <input type="file" name="avatar">
 
