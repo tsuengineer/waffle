@@ -14,7 +14,7 @@
                     入力内容に誤りがあります。エラーメッセージを確認してください。
                 </x-text.aside>
             @endif
-{{$errors}}
+
             <form id="postUpload" method="POST" action="{{ route('posts.store') }}"  class="px-2 sm:px-0">
                 @csrf
 
