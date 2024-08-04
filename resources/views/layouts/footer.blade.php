@@ -12,7 +12,7 @@
             </div>
 
             <div class="pt-4 text-center">
-                (C) {{now()->year}} 棋譜Viewer
+                (C) {{now()->year}} わっふる
             </div>
         </div>
     </div>

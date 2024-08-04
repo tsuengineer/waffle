@@ -7,6 +7,22 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
+        <!-- OGP -->
+        <meta property="og:title" content="@yield('title')" />
+        <meta property="og:description" content="オセロ棋譜共有サイト" />
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://waffleboard.net" />
+        <meta property="og:image" content="https://waffleboard.net/images/ogp.png" />
+        <meta property="og:site_name" content="ちびキャラパレット" />
+
+        <!-- Twitter -->
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@board_waffle" />
+        <meta name="twitter:domain" content="waffleboard.net" />
+        <meta name="twitter:image" content="https://waffleboard.net/images/ogp.png" />
+        <meta property="twitter:title" content="@yield('title')" />
+        <meta name="twitter:description" content="オセロ棋譜共有サイト" />
+
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
