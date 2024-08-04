@@ -61,7 +61,7 @@
                     <div class="border border-zinc-800 bg-zinc-900 shadow-sm sm:rounded-lg">
                         <div class="flex py-2 mb-4 bg-zinc-800">
                             <div class="pl-2 pr-4">
-                                <a class="flex" href="/profile/{{ $post->user->slug }}">
+                                <a class="flex" href="{{ route('users.show', ['userSlug' => $post->user->slug]) }}">
                                     @if($post->user->avatars?->path)
                                         <img class="w-8 h-8 rounded-full m-auto" src="{{ asset('storage/' . config('image.avatar_path') . '/' . user_directory_path($post->user->id) . '/' . $post->user->avatars->path) }}" alt="アバター" />
                                     @else
