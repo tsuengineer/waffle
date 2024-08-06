@@ -5,7 +5,7 @@
 </div>
 
 @push('scripts')
-    <script src="{{ asset('js/board.js') }}"></script>
+    <script src="{{ asset('js/board.js') }}?v=20240807"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const kifu = "{{ $kifu ?? '' }}";
