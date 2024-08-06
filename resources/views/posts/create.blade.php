@@ -65,7 +65,7 @@
                     </div>
 
                     <div class="sm:col-span-2">
-                        <x-input-label for="comments" value="コメント" /><span class="ml-1 text-xs text-amber-600">β版で実装</span>
+                        <x-input-label for="comments" value="コメント" />
                         <x-form.input-textarea id="comments" name="comments" type="text" class="mt-1 block w-full" :value="old('comments')" maxlength="10000" autocomplete="comments" rows="8" />
                         <x-input-error class="mt-2" :messages="$errors->get('comments')" />
                     </div>
