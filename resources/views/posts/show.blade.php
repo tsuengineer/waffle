@@ -48,6 +48,7 @@
                             start="{{ $post['start_move'] }}"
                             blackUserName="{{ $post['black_user_name'] }}"
                             whiteUserName="{{ $post['white_user_name'] }}"
+                            comments="{{ $post->comments }}"
                         ></x-board>
                     </div>
                     @if (!empty($post['end_text']))

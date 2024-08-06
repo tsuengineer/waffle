@@ -12,6 +12,7 @@ class Preview {
     moveTotalCount;
     blackUserName;
     whiteUserName;
+    comments;
 
     /**
      * コンストラクタ
@@ -21,8 +22,9 @@ class Preview {
      * @param {number} [start=0] 開始位置
      * @param {string} [blackUserName=''] 黒番ユーザー名
      * @param {string} [whiteUserName=''] 白番ユーザー名
+     * @param {string} [comments=''] コメント
      */
-    constructor(kifu, inputBoard, initTurn = 'black', start = 0, blackUserName, whiteUserName) {
+    constructor(kifu, inputBoard, initTurn = 'black', start = 0, blackUserName= '', whiteUserName = '', comments) {
         this.inputBoard = inputBoard;
         this.initTurn = initTurn === 'white' ? this.WHITE_TURN : this.BLACK_TURN;
         this.initBoard(this.inputBoard);
@@ -32,6 +34,7 @@ class Preview {
         this.currentKifu = kifu.substr(0, start * 2);
         this.blackUserName = blackUserName;
         this.whiteUserName = whiteUserName;
+        this.comments = JSON.parse(comments.replace(/&amp;quot;/g, '"'));
     }
 
     /**
@@ -439,6 +442,27 @@ class Preview {
         });
         moveText.textContent = this.currentKifu.length < 2 ? "--" : this.currentKifu.substr(-2, 2);
         boardSvg.appendChild(moveText);
+
+        // コメント: 改行でテキストを分割し、最大3行までに制限
+        const currentMove = this.currentKifu.length / 2;
+        const commentObj = this.comments.find(comment => comment.moves === currentMove);
+        const comment = commentObj ? commentObj.text : '';
+        const lines = comment.split('\n').slice(0, 3);
+        let yPosition = 760;
+
+        lines.forEach((line) => {
+            const commentText = this.createSvgElement("text", {
+                x: "10",
+                y: yPosition.toString(),
+                "text-anchor": "left",
+                fill: "#fff",
+                "font-size": "20",
+            });
+
+            commentText.textContent = line;
+            yPosition += 30;
+            boardSvg.appendChild(commentText);
+        });
         boardDiv.appendChild(boardSvg);
     }
 

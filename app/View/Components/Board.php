@@ -12,6 +12,7 @@ class Board extends Component
     public int $start;
     public string $blackUserName;
     public string $whiteUserName;
+    public string $comments;
 
     public function __construct(
         $kifu = null,
@@ -20,6 +21,7 @@ class Board extends Component
         $start = 0,
         $blackUserName = '',
         $whiteUserName = '',
+        $comments = null,
     ) {
         $this->kifu = $kifu ?? '';
         $this->initBoard = $initBoard ?? '';
@@ -27,6 +29,7 @@ class Board extends Component
         $this->start = $start;
         $this->blackUserName = $blackUserName;
         $this->whiteUserName = $whiteUserName;
+        $this->comments = $comments;
     }
 
     public function render()
@@ -38,6 +41,7 @@ class Board extends Component
             'start' => $this->start,
             'blackUserName' => $this->blackUserName,
             'whiteUserName' => $this->whiteUserName,
+            'comments' => $this->comments,
         ]);
     }
 }

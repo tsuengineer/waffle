@@ -14,7 +14,8 @@
             const start = "{{ $start ?? 0 }}";
             const blackUserName = "{{ $blackUserName ?? '' }}";
             const whiteUserName = "{{ $whiteUserName ?? '' }}";
-            window.board = new Preview(kifu, initBoard, initTurn, Number(start), blackUserName, whiteUserName);
+            const comments = "{{ $comments ?? '' }}";
+            window.board = new Preview(kifu, initBoard, initTurn, Number(start), blackUserName, whiteUserName, comments);
 
             board.makeBoard(board.currentKifu);
             board.drawBoard();
