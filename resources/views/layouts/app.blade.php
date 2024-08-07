@@ -13,7 +13,7 @@
         <meta property="og:type" content="article">
         <meta property="og:url" content="https://waffleboard.net" />
         <meta property="og:image" content="https://waffleboard.net/images/ogp.png" />
-        <meta property="og:site_name" content="ちびキャラパレット" />
+        <meta property="og:site_name" content="わっふる" />
 
         <!-- Twitter -->
         <meta name="twitter:card" content="summary" />
