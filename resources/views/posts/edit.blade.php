@@ -111,7 +111,7 @@
         document.addEventListener('DOMContentLoaded', function () {
             const textarea = document.getElementById('comments');
             if (textarea) {
-                textarea.setAttribute('placeholder', "0:初手のコメント\n4:4手目のコメント");
+                textarea.setAttribute('placeholder', "0:初手のコメント\n4:4手目のコメント\\nで3行まで改行できます");
             }
         });
     </script>

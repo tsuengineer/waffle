@@ -42,7 +42,7 @@
 
                     @if (!empty($post['begin_text']))
                         <div class="my-4 p-2 bg-zinc-900 text-zinc-300 text-sm">
-                            {!! $post['begin_text'] !!}
+                            {!! nl2br(e($post['begin_text'])) !!}
                         </div>
                     @endif
                     <div class="">
@@ -57,7 +57,7 @@
                     </div>
                     @if (!empty($post['end_text']))
                         <div class="my-4 p-2 bg-zinc-900 text-zinc-300 text-sm">
-                            {!! $post['end_text'] !!}
+                            {!! nl2br(e($post['end_text'])) !!}
                         </div>
                     @endif
                 </div>
