@@ -21,7 +21,7 @@ class Board extends Component
         $start = 0,
         $blackUserName = '',
         $whiteUserName = '',
-        $comments = null,
+        $comments = '',
     ) {
         $this->kifu = $kifu ?? '';
         $this->initBoard = $initBoard ?? '';

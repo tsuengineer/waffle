@@ -24,7 +24,7 @@ class Preview {
      * @param {string} [whiteUserName=''] 白番ユーザー名
      * @param {string} [comments=''] コメント
      */
-    constructor(kifu, inputBoard, initTurn = 'black', start = 0, blackUserName= '', whiteUserName = '', comments) {
+    constructor(kifu, inputBoard, initTurn = 'black', start = 0, blackUserName= '', whiteUserName = '', comments = '') {
         this.inputBoard = inputBoard;
         this.initTurn = initTurn === 'white' ? this.WHITE_TURN : this.BLACK_TURN;
         this.initBoard(this.inputBoard);
@@ -34,7 +34,9 @@ class Preview {
         this.currentKifu = kifu.substr(0, start * 2);
         this.blackUserName = blackUserName;
         this.whiteUserName = whiteUserName;
-        this.comments = JSON.parse(comments.replace(/&amp;quot;/g, '"'));
+        this.comments = comments !== ''
+            ? JSON.parse(comments.replace(/&amp;quot;/g, '"'))
+            : [];
     }
 
     /**

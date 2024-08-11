@@ -34,6 +34,9 @@ Route::middleware('auth')->group(function () {
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
 Route::get('/posts/{ulid}', [PostController::class, 'show'])->name('posts.show');
 
+// オセロ盤
+Route::get('/board', fn() => view('board.index'))->name('board.index');
+
 // エラー
 Route::get('errors', fn() => view('errors.index'))->name('errors.index');
 
