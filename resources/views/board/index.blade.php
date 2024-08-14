@@ -125,15 +125,12 @@
             return `${appUrl}/board?kifu=${kifu}&start_move=${startMove}&black_user_name=${blackUserName}&white_user_name=${whiteUserName}`;
         }
 
-        function copyToClipboard(text) {
-            navigator.clipboard.writeText(text).then(() => {
-                const copyMessage = document.getElementById('copyMessage');
-                copyMessage.textContent = `コピーしました: ${text}`;
-                copyMessage.style.display = 'block';
-                setTimeout(() => {
-                    copyMessage.style.display = 'none';
-                }, 2000);
-            });
+        function generateUrl() {
+            const kifu = encodeURIComponent(document.getElementById('kifu').value);
+            const startMove = encodeURIComponent(document.getElementById('start_move').value);
+            const blackUserName = encodeURIComponent(document.getElementById('black_user_name').value);
+            const whiteUserName = encodeURIComponent(document.getElementById('white_user_name').value);
+            return `${appUrl}/board?kifu=${kifu}&start_move=${startMove}&black_user_name=${blackUserName}&white_user_name=${whiteUserName}`;
         }
 
         function handleUrlGeneration() {
@@ -141,14 +138,14 @@
             const hashtags = 'オセロ,わっふる';
             copyToClipboard(url);
             const shareLink = document.getElementById('shareLink');
-            shareLink.href = `https://x.com/intent/tweet?${new URLSearchParams({ text: "棋譜を共有しました:\n" + url + "\n", hashtags })}`;
+            shareLink.href = `https://x.com/intent/tweet?${new URLSearchParams({ text: "棋譜を共有しました:\n" + url + "\n", hashtags: hashtags })}`;
         }
 
         function handleXShare() {
             const url = generateUrl();
             const hashtags = 'オセロ,わっふる';
             const shareLink = document.getElementById('shareLink');
-            shareLink.href = `https://x.com/intent/tweet?${new URLSearchParams({ text: "棋譜を共有しました:\n" + url + "\n", hashtags })}`;
+            shareLink.href = `https://x.com/intent/tweet?${new URLSearchParams({ text: "棋譜を共有しました:\n" + url + "\n", hashtags: hashtags })}`;
             window.open(shareLink.href, '_blank');
         }
 
