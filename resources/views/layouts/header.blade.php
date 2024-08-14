@@ -94,16 +94,15 @@
         <!-- Responsive Navigation Menu -->
         <div class="hidden" :class="{'block': open, 'hidden': ! open}">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 pt-2 pb-3 space-y-1 bg-zinc-800">
+                <x-responsive-nav-link :href="route('top.index')" :active="request()->routeIs('top.index')">
+                    トップ
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('board.index')" :active="request()->routeIs('board.index')">
+                    棋譜ビューワー
+                </x-responsive-nav-link>
                 @auth
-                    <x-responsive-nav-link :href="route('top.index')" :active="request()->routeIs('top.index')">
-                        トップ
-                    </x-responsive-nav-link>
                     <x-responsive-nav-link class="block sm:hidden" :href="route('posts.create')" :active="request()->routeIs('posts.create')">
                         棋譜を投稿
-                    </x-responsive-nav-link>
-                @else
-                    <x-responsive-nav-link :href="route('top.index')" :active="request()->routeIs('top.index')">
-                        トップ
                     </x-responsive-nav-link>
                 @endauth
             </div>
