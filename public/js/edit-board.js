@@ -451,16 +451,26 @@ class Edit {
         moveText.textContent = lastMove ? lastMove : '--';
         boardSvg.appendChild(moveText);
 
-        const commentText = this.createSvgElement("text", {
+        const commentText1 = this.createSvgElement("text", {
             x: "0",
             y: "760",
             "text-anchor": "left",
             fill: "#fff",
-            "font-size": "10",
+            "font-size": "18",
         });
 
-        commentText.textContent = this.currentKifu.substr(0, this.currentMoveCount * 2);
-        boardSvg.appendChild(commentText);
+        commentText1.textContent = '盤面をクリックすると、ここに棋譜が表示されるのでコピーしてお使いください';
+        boardSvg.appendChild(commentText1);
+        const commentText2 = this.createSvgElement("text", {
+            x: "0",
+            y: "790",
+            "text-anchor": "left",
+            fill: "#fff",
+            "font-size": "9",
+        });
+
+        commentText2.textContent = this.currentKifu.substr(0, this.currentMoveCount * 2);
+        boardSvg.appendChild(commentText2);
 
         boardDiv.appendChild(boardSvg);
     }
