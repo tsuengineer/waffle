@@ -83,6 +83,36 @@
                             </div>
                         </div>
 
+                        {{-- 次と前の棋譜 --}}
+                        <div class="flex flex-col py-2 text-zinc-300">
+                            @if($prevPost)
+                                <div class="flex py-2 mb-4 bg-zinc-800">
+                                    <div class="pl-2 pr-4">
+                                        前の棋譜
+                                    </div>
+                                </div>
+                                <div class="pl-2 mb-4">
+                                    <a href="{{ route('posts.show', ['ulid' => $prevPost->ulid]) }}" class="text-blue-400 hover:underline">
+                                        <span class="truncate pl-1">{{ Str::limit($prevPost->title, 30) }}</span>
+                                    </a>
+                                </div>
+                            @endif
+
+                            @if($nextPost)
+                                <div class="flex py-2 mb-4 bg-zinc-800">
+                                    <div class="pl-2 pr-4">
+                                        次の棋譜
+                                    </div>
+                                </div>
+                                <div class="pl-2 mb-4">
+                                    <a href="{{ route('posts.show', ['ulid' => $nextPost->ulid]) }}" class="text-blue-400 hover:underline">
+                                        <span class="truncate pl-1">{{ Str::limit($nextPost->title, 30) }}</span>
+                                    </a>
+                                </div>
+                            @endif
+                        </div>
+
+
                         <div class="flex py-2 mb-4 bg-zinc-800">
                             <div class="pl-2 pr-4">
                                 おすすめの棋譜

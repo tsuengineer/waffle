@@ -30,7 +30,9 @@ class PostController extends Controller
         }
 
         return response()->view('posts.show', [
-            'post' => $data['post']
+            'post' => $data['post'],
+            'prevPost' => $data['prevPost'],
+            'nextPost' => $data['nextPost'],
         ]);
     }
 
