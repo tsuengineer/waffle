@@ -52,6 +52,11 @@ Breadcrumbs::for('profile.show', fn(BreadcrumbsTrail $trail) => [
     $trail->push('マイページ')
 ]);
 
+Breadcrumbs::for('static.links', fn(BreadcrumbsTrail $trail) => [
+    $trail->parent('top.index'),
+    $trail->push('リンク集')
+]);
+
 Breadcrumbs::for('error.index', fn(BreadcrumbsTrail $trail) => [
     $trail->parent('top.index'),
     $trail->push('エラーページ')
