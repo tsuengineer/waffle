@@ -19,7 +19,7 @@ class ShowAction
 
         $posts = $user->posts()
             ->orderBy('sort')
-            ->paginate(40);
+            ->paginate(100);
 
         return [
             'user' => $user,

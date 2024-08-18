@@ -185,7 +185,10 @@
                                     </li>
                                 @endforeach
                             </ul>
-                            {{ $posts->appends(['page' => request()->query('page')])->links() }}
+
+                            <div class="flex justify-center py-4">
+                                {{ $posts->appends(['page' => request()->query('page')])->onEachSide(1)->links() }}
+                            </div>
                         </div>
                     </div>
                 </div>

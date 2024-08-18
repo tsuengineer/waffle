@@ -16,7 +16,7 @@ class IndexAction
 
         $posts = $user->posts()
             ->orderBy('sort')
-            ->paginate(40, ['*'], 'page');
+            ->paginate(100, ['*'], 'page');
 
         return [
             'user' => $user,
