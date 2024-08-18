@@ -100,6 +100,9 @@
                 <x-responsive-nav-link :href="route('board.index')" :active="request()->routeIs('board.index')">
                     棋譜ビューワー
                 </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('xot.random')" :active="request()->routeIs('xot.random')">
+                    XOT初期盤面
+                </x-responsive-nav-link>
                 @auth
                     <x-responsive-nav-link class="block sm:hidden" :href="route('posts.create')" :active="request()->routeIs('posts.create')">
                         棋譜を投稿

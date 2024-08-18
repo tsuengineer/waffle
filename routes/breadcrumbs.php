@@ -32,6 +32,11 @@ Breadcrumbs::for('board.index', fn(BreadcrumbsTrail $trail) => [
     $trail->push('棋譜ビューワー')
 ]);
 
+Breadcrumbs::for('xot.random', fn(BreadcrumbsTrail $trail) => [
+    $trail->parent('top.index'),
+    $trail->push('XOT初期盤面(ランダム)')
+]);
+
 Breadcrumbs::for('user.index', fn(BreadcrumbsTrail $trail) => [
     $trail->parent('top.index'),
     $trail->push('ユーザ一覧', route('users.index'))

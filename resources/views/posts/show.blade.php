@@ -1,20 +1,37 @@
 @extends('layouts.app')
 @include('layouts.header')
-@section('title'){{ $post->title }}｜{{ config('app.name') }}@endsection
+@section('title')
+    @if (request()->routeIs('xot.random'))
+        XOT初期盤面(ランダム)｜{{ config('app.name') }}
+    @else
+        {{ $post->title }}｜{{ config('app.name') }}
+    @endif
+@endsection
 
 @section('content')
     <div class="pt-4 pb-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="mb-8">
-                {{ Breadcrumbs::render('post.show') }}
+                @if (request()->routeIs('xot.random'))
+                    {{ Breadcrumbs::render('xot.random') }}
+                @else
+                    {{ Breadcrumbs::render('post.show') }}
+                @endif
             </div>
 
             <div class="md:flex md:space-x-4">
                 <div id="board-area" class="w-full md:w-2/3">
                     @if ($post->user_id === Auth::user()?->id ?? '')
-                        <x-secondary-button class="hidden sm:block">
+                        <x-secondary-button>
                             <a href="{{ route('posts.edit', ['ulid' => $post->ulid]) }}">棋譜情報を編集</a>
                         </x-secondary-button>
+                    @endif
+                    @if (request()->routeIs('xot.random'))
+                        <a href="{{ request()->url() }}">
+                            <x-secondary-button>
+                                ページを更新
+                            </x-secondary-button>
+                        </a>
                     @endif
                     <div class="flex justify-between items-center">
                         <div class="font-semibold overflow-hidden truncate text-lg sm:text-2xl w-9/12 md:w-10/12">{{ $post->title }}</div>
@@ -85,7 +102,7 @@
 
                         {{-- 次と前の棋譜 --}}
                         <div class="flex flex-col py-2 text-zinc-300">
-                            @if($prevPost)
+                            @if(!empty($prevPost))
                                 <div class="flex py-2 mb-4 bg-zinc-800">
                                     <div class="pl-2 pr-4">
                                         前の棋譜
@@ -98,7 +115,7 @@
                                 </div>
                             @endif
 
-                            @if($nextPost)
+                            @if(!empty($nextPost))
                                 <div class="flex py-2 mb-4 bg-zinc-800">
                                     <div class="pl-2 pr-4">
                                         次の棋譜
@@ -111,7 +128,6 @@
                                 </div>
                             @endif
                         </div>
-
 
                         <div class="flex py-2 mb-4 bg-zinc-800">
                             <div class="pl-2 pr-4">

@@ -4,6 +4,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TopController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\XotController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [TopController::class, 'index'])->name('top.index');
@@ -36,6 +37,9 @@ Route::get('/posts/{ulid}', [PostController::class, 'show'])->name('posts.show')
 
 // オセロ盤
 Route::get('/board', fn() => view('board.index'))->name('board.index');
+
+// XOT
+Route::get('/xot/random', [XotController::class, 'random'])->name('xot.random');
 
 // エラー
 Route::get('errors', fn() => view('errors.index'))->name('errors.index');
