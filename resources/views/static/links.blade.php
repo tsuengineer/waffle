@@ -33,12 +33,27 @@
 
             <div class="mb-8 py-4 bg-zinc-900 overflow-hidden border border-zinc-800 sm:rounded">
                 <div class="p-4">
-                    <h2 class="text-lg font-bold text-zinc-200">おすすめオセロ解説サイト</h2>
+                    <h2 class="text-lg font-bold text-zinc-200">オセラーのブログ</h2>
                     <p class="text-zinc-400 mt-2">
-                        読めばオセロが強くなる解説サイト
+                        読めばオセロが強くなる解説サイトなど
                     </p>
                     <ul class="list-disc list-inside mt-4 text-zinc-400">
-                        <li><a href="https://bassy84.net/" target="_blank" class="text-blue-400 hover:underline">オセロの勝ち方</a></li>
+                        <li><a href="https://bassy84.net/" target="_blank" class="text-blue-400 hover:underline">オセロの勝ち方(抜歯ぃさん)</a></li>
+                        <li><a href="http://blog.livedoor.jp/umigame_oth/" target="_blank" class="text-blue-400 hover:underline">黒引き分け勝ち(うみがめさん)</a></li>
+                        <li><a href="https://othelloq.com/" target="_blank" class="text-blue-400 hover:underline">おせろく(ラスクさん)</a></li>
+                        <li><a href="http://othello2006.blog74.fc2.com/" target="_blank" class="text-blue-400 hover:underline">オセロ(りばーさん)</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mb-8 py-4 bg-zinc-900 overflow-hidden border border-zinc-800 sm:rounded">
+                <div class="p-4">
+                    <h2 class="text-lg font-bold text-zinc-200">オセラーのYoutube</h2>
+                    <p class="text-zinc-400 mt-2">
+                        観ればオセロが強くなる解説動画など
+                    </p>
+                    <ul class="list-disc list-inside mt-4 text-zinc-400">
+                        <li><a href="https://www.youtube.com/@river-666" target="_blank" class="text-blue-400 hover:underline">りばーちゃんねる</a></li>
                     </ul>
                 </div>
             </div>
