@@ -18,6 +18,7 @@ class ShowAction
                 'post' => null,
                 'prevPost' => null,
                 'nextPost' => null,
+                'recommendedPosts' => [],
             ];
         }
 
@@ -35,6 +36,16 @@ class ShowAction
             ->orderBy('sort', 'asc')
             ->first();
 
-        return compact('post', 'prevPost', 'nextPost');
+        // おすすめの投稿を取得
+        $recommendedPosts = Post::query()
+            ->whereHas('tags', function ($query) use ($post) {
+                $query->whereIn('name', $post->tags->pluck('name'));
+            })
+            ->where('id', '!=', $post->id)
+            ->inRandomOrder()
+            ->take(5)
+            ->get();
+
+        return compact('post', 'prevPost', 'nextPost', 'recommendedPosts');
     }
 }

@@ -33,6 +33,7 @@ class PostController extends Controller
             'post' => $data['post'],
             'prevPost' => $data['prevPost'],
             'nextPost' => $data['nextPost'],
+            'recommendedPosts' => $data['recommendedPosts'],
         ]);
     }
 
