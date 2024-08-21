@@ -142,23 +142,23 @@
                             @endif
                         </div>
 
-                        <div class="flex py-2 mb-4 bg-zinc-800 text-zinc-200">
-                            <div class="pl-2 pr-4">
-                                おすすめの棋譜<span class="pl-2 text-xs">(同じタグを含む棋譜)</span>
-                            </div>
-                        </div>
-
-                        <div class="pl-2 mb-8">
-                            @forelse($recommendedPosts as $recommendedPost)
-                                <div class="mb-2">
-                                    <a href="{{ route('posts.show', ['ulid' => $recommendedPost->ulid]) }}" class="text-blue-400 hover:underline">
-                                        <span class="truncate pl-1">{{ Str::limit($recommendedPost->title, 30) }}</span>
-                                    </a>
+                        @if(!empty($recommendedPosts))
+                            <div class="flex py-2 mb-4 bg-zinc-800 text-zinc-200">
+                                <div class="pl-2 pr-4">
+                                    おすすめの棋譜<span class="pl-2 text-xs">(同じタグを含む棋譜)</span>
                                 </div>
-                            @empty
-                                <div>おすすめの棋譜がありません。</div>
-                            @endforelse
-                        </div>
+                            </div>
+
+                            <div class="pl-2 mb-8">
+                                @foreach($recommendedPosts as $recommendedPost)
+                                    <div class="mb-2">
+                                        <a href="{{ route('posts.show', ['ulid' => $recommendedPost->ulid]) }}" class="text-blue-400 hover:underline">
+                                            <span class="truncate pl-1">{{ Str::limit($recommendedPost->title, 30) }}</span>
+                                        </a>
+                                    </div>
+                                @endforeach
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
