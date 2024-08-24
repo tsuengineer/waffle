@@ -1,6 +1,7 @@
 class Preview {
     BLACK_TURN = 100;
     WHITE_TURN = -100;
+    boardId;
     initTurn;
     nowTurn;
     playerBoard;
@@ -16,6 +17,7 @@ class Preview {
 
     /**
      * コンストラクタ
+     * @param {string} boardId ID
      * @param {string} kifu 棋譜
      * @param {string} inputBoard 初期盤面
      * @param {string} [initTurn='black'] 初期手番
@@ -24,7 +26,8 @@ class Preview {
      * @param {string} [whiteUserName=''] 白番ユーザー名
      * @param {string} [comments=''] コメント
      */
-    constructor(kifu, inputBoard, initTurn = 'black', start = 0, blackUserName= '', whiteUserName = '', comments = '') {
+    constructor(boardId, kifu, inputBoard, initTurn = 'black', start = 0, blackUserName= '', whiteUserName = '', comments = '') {
+        this.boardId = boardId;
         this.inputBoard = inputBoard;
         this.initTurn = initTurn === 'white' ? this.WHITE_TURN : this.BLACK_TURN;
         this.initBoard(this.inputBoard);
@@ -224,7 +227,7 @@ class Preview {
      * @param {string} lastMove 最後の手
      */
     drawBoard(lastMove) {
-        const boardDiv = document.getElementById("board");
+        const boardDiv = document.getElementById(this.boardId);
         const frameHeight = 820;
         const boardFrameSize = 670;
         const boardSize = 576;

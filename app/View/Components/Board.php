@@ -6,6 +6,7 @@ use Illuminate\View\Component;
 
 class Board extends Component
 {
+    public string $boardId;
     public string $kifu;
     public string $initBoard;
     public string $initTurn;
@@ -15,6 +16,7 @@ class Board extends Component
     public string $comments;
 
     public function __construct(
+        $boardId = '',
         $kifu = null,
         $initBoard = null,
         $initTurn = 'black',
@@ -23,6 +25,7 @@ class Board extends Component
         $whiteUserName = '',
         $comments = '',
     ) {
+        $this->boardId = $kifu ?? '';
         $this->kifu = $kifu ?? '';
         $this->initBoard = $initBoard ?? '';
         $this->initTurn = $initTurn;
@@ -35,6 +38,7 @@ class Board extends Component
     public function render()
     {
         return view('components.othello.board', [
+            'boardId' => $this->boardId,
             'kifu' => $this->kifu,
             'initBoard' => $this->initBoard,
             'initTurn' => $this->initTurn,

@@ -47,4 +47,6 @@ Route::get('/links', fn() => view('static.links'))->name('static.links');
 // エラー
 Route::get('errors', fn() => view('errors.index'))->name('errors.index');
 
+Route::get('/board/test', fn() => view('board.test'))->name('board.test');
+
 require __DIR__.'/auth.php';

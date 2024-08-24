@@ -39,6 +39,7 @@
 
         <!-- Scripts -->
         @stack('scripts')
+        <script src="{{ asset('js/preview-board.js') }}?v=20240824"></script>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased bg-black text-white">
