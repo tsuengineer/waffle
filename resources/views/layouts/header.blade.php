@@ -9,7 +9,7 @@
                         <a href="{{ route('top.index') }}" class="flex items-center">
                             <img src="{{ asset('images/logo.png') }}" class="block h-9 w-auto fill-current text-gray-800" alt="ロゴ">
                             <div class="flex flex-col pl-2">
-                                <p class="font-bold">わっふる(α版)</p>
+                                <p class="font-bold">わっふる(β版)</p>
                                 <p class="text-xs text-zinc-400">棋譜共有サイト</p>
                             </div>
                         </a>

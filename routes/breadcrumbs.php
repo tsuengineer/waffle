@@ -57,6 +57,11 @@ Breadcrumbs::for('static.links', fn(BreadcrumbsTrail $trail) => [
     $trail->push('リンク集')
 ]);
 
+Breadcrumbs::for('static.basic-strategy', fn(BreadcrumbsTrail $trail) => [
+    $trail->parent('top.index'),
+    $trail->push('オセロ基本戦略')
+]);
+
 Breadcrumbs::for('error.index', fn(BreadcrumbsTrail $trail) => [
     $trail->parent('top.index'),
     $trail->push('エラーページ')

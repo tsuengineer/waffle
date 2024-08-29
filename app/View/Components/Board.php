@@ -16,7 +16,7 @@ class Board extends Component
     public string $comments;
 
     public function __construct(
-        $boardId = '',
+        $boardId = 'board',
         $kifu = null,
         $initBoard = null,
         $initTurn = 'black',
@@ -25,7 +25,7 @@ class Board extends Component
         $whiteUserName = '',
         $comments = '',
     ) {
-        $this->boardId = $kifu ?? '';
+        $this->boardId = $boardId;
         $this->kifu = $kifu ?? '';
         $this->initBoard = $initBoard ?? '';
         $this->initTurn = $initTurn;

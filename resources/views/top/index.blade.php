@@ -15,9 +15,6 @@
                     <p class="text-zinc-400">
                         このサイトは、オセロの棋譜を投稿・共有するためのプラットフォームです。 オセロの戦略や戦術を深めましょう。
                     </p>
-                    <p class="text-orange-500">
-                        ※現在α版(開発初期段階にある試作段階)です。機能が不完全だったり、バグが含まれている可能性があります。
-                    </p>
                 </div>
             </div>
 
@@ -93,10 +90,9 @@
                         以下のセクションでは、初心者から上級者まで役立つ情報を提供しています。
                     </p>
                     <ul class="list-disc list-inside mt-4 text-zinc-400">
-                        <li><a href="#" class="text-blue-400 hover:underline">定石集</a></li>
-                        <li><a href="#" class="text-blue-400 hover:underline">基本的な戦略</a></li>
-                        <li><a href="#" class="text-blue-400 hover:underline">中盤の戦術</a></li>
-                        <li><a href="#" class="text-blue-400 hover:underline">終盤の攻略法</a></li>
+                        <li><a href="{{ route('static.basic-strategy') }}" class="text-blue-400 hover:underline">基本的な戦略</a></li>
+                        <li><a href="#" class="text-blue-400 line-through">中盤の戦術</a></li>
+                        <li><a href="#" class="text-blue-400 line-through">終盤の攻略法</a></li>
                     </ul>
                 </div>
             </div>

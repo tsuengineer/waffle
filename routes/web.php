@@ -44,6 +44,9 @@ Route::get('/xot/random', [XotController::class, 'random'])->name('xot.random');
 // リンク集
 Route::get('/links', fn() => view('static.links'))->name('static.links');
 
+// オセロ講座
+Route::get('/basic-strategy', fn() => view('static.basic-strategy'))->name('static.basic-strategy');
+
 // エラー
 Route::get('errors', fn() => view('errors.index'))->name('errors.index');
 
