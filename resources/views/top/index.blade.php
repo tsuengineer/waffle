@@ -91,8 +91,6 @@
                     </p>
                     <ul class="list-disc list-inside mt-4 text-zinc-400">
                         <li><a href="{{ route('static.basic-strategy') }}" class="text-blue-400 hover:underline">基本的な戦略</a></li>
-                        <li><a href="#" class="text-blue-400 line-through">中盤の戦術</a></li>
-                        <li><a href="#" class="text-blue-400 line-through">終盤の攻略法</a></li>
                     </ul>
                 </div>
             </div>

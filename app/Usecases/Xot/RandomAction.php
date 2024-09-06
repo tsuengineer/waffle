@@ -10,7 +10,7 @@ class RandomAction
     {
         $post = Post::with('user', 'user.avatars', 'tags', 'comments')
             ->where('user_id', 1)
-            ->whereHas('tags', function($query) {
+            ->whereHas('tags', function ($query) {
                 $query->where('name', 'XOT初期盤面');
             })
             ->inRandomOrder()

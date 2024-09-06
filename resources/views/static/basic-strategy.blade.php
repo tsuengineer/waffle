@@ -93,51 +93,88 @@
 
             <div class="mb-8 py-4 bg-zinc-900 overflow-hidden border border-zinc-800 sm:rounded">
                 <div class="sm:pt-4 sm:pr-4 pt-8 px-4">
-                    <h2 class="mb-4 text-lg text-zinc-200 font-bold">Ⅱ、だんご石と中割り(※以降作成中)</h2>
-                    <p class="text-zinc-400">
-                        次に、良い手の一つとして「だんご石」というものがあります。これは図6に示すように、自分の石が内側に集まっている状態です。内側に集まるように石を置くと有利になることが多いです。
-
-                        図6：だんご石を作る
-                        白番です。次の手は？
-                        白e3と打つことで、白石がすべてつながり、だんご石の形になりました。
+                    <h2 class="mb-4 text-lg text-zinc-200 font-bold">Ⅱ、中割り</h2>
+                    <p class="mb-4 text-zinc-400">
+                        では、どのようにすれば先ほどのような盤面にできるでしょうか。<br>
+                        そのためのテクニックの1つとして「中割り」があります。<br>
+                        内側の石をひっくり返すことによって、自分の石を相手に囲ませることができます。<br>
+                        その結果、相手の打てる場所を制限して有利に進めることができます。<br>
                     </p>
+                    <p class="text-zinc-400">
+                        実際に盤面を見てみましょう。(黒番です)
+                    </p>
+                    <div class="w-full md:w-2/3 py-4">
+                        <x-board
+                            boardId="no2"
+                            initBoard="-------------------OXO-----OOO-----O-O-----O-O------------------"
+                            kifu="E5"
+                            initTurn="black"
+                            start="0"
+                            blackUserName=""
+                            whiteUserName=""
+                            comments="{{ json_encode([
+                                ['moves' => 0, 'text' => '1石だけひっくり返す手がいくつかありますが、E5が中割りという良い手です\n進むボタンで進めてください'],
+                                ['moves' => 1, 'text' => '打つマス以外を他の石で囲われた石だけをひっくり返す手を中割りといいます\n相手の打てるマスを増やさず、自分の打てるマスを減らさずに済みます\nE5以外の場合、相手と自分の打てるマスの数がどう違うか数えてみてください'],
+                            ]) }}"
+                        ></x-board>
+                    </div>
                 </div>
             </div>
 
             <div class="mb-8 py-4 bg-zinc-900 overflow-hidden border border-zinc-800 sm:rounded">
                 <div class="sm:pt-4 sm:pr-4 pt-8 px-4">
-                    <h2 class="mb-4 text-lg text-zinc-200 font-bold">Ⅲ、天王山を見極める</h2>
+                    <h2 class="mb-4 text-lg text-zinc-200 font-bold">Ⅲ、引っぱり</h2>
+                    <p class="mb-4 text-zinc-400">
+                        次は「引っぱり」というテクニックを紹介します。<br>
+                        序盤～中盤を有利に進めるためには、囲まれる以外に自分の石をまとめることも大切です。
+                    </p>
                     <p class="text-zinc-400">
-                        オセロでは、相手の手数を減らし、自分の手数を増やすことが基本です。相手にも自分にも有利な場所は早めに打っておく必要があります。このような場所を「天王山」と呼びます。                    </p>
+                        実際に盤面を見てみましょう。(黒番です)
+                    </p>
+                    <div class="w-full md:w-2/3 py-4">
+                        <x-board
+                            boardId="no3"
+                            initBoard="-------------------XOX-----OXO-----OOO-----OOO------------------"
+                            kifu="E2"
+                            initTurn="black"
+                            start="0"
+                            blackUserName=""
+                            whiteUserName=""
+                            comments="{{ json_encode([
+                                ['moves' => 0, 'text' => 'どこに打つのが最も良い手でしょうか？進むボタンで進めてください'],
+                                ['moves' => 1, 'text' => 'ここではE2が最も良い手です\nE2に打った後、相手の打てるマスは5個しかありません\nE2以外の場合、相手の打てるマスは全て9マス以上です'],
+                            ]) }}"
+                        ></x-board>
+                    </div>
+
                     <p class="text-zinc-400">
-                        白番です。天王山はどこでしょう？
-                        この図では、c4がそれに該当します。白番ならc4に打つことで、黒がc4に打つ絶好の手を消すことができます。好手を消すことで、黒は他に打たざるを得なくなり、一手（または二手）のアドバンテージを得ることができます。天王山は簡単に見えるものから、見えにくいものまであり、それを見極めることが勝率を高める鍵となります。                    </p>
+                        中割りっぽい手を打った場合
+                    </p>
+                    <div class="w-full md:w-2/3 py-4">
+                        <x-board
+                            boardId="no4"
+                            initBoard="-------------------XOX-----OXO-----OOO-----OOO------------------"
+                            kifu="E7"
+                            initTurn="black"
+                            start="0"
+                            blackUserName=""
+                            whiteUserName=""
+                            comments="{{ json_encode([
+                                ['moves' => 0, 'text' => '囲まれようとしてE7に打った場合を見てみましょう\n進むボタンで進めてください'],
+                                ['moves' => 1, 'text' => 'E7に打った後の相手の打てるマスは11個になってしまいました\n無理やり囲まれようとするよりも、まとめた方がいいという一例です'],
+                            ]) }}"
+                        ></x-board>
+                    </div>
                 </div>
             </div>
 
             <div class="mb-8 py-4 bg-zinc-900 overflow-hidden border border-zinc-800 sm:rounded">
                 <div class="sm:pt-4 sm:pr-4 pt-8 px-4">
-                    <h2 class="mb-4 text-lg text-zinc-200 font-bold">Ⅳ、辺の戦術</h2>
-                    <p class="text-zinc-400">
-                        辺の戦術は、オセロにおいて非常に重要です。辺を制することで、隅を取るための布石を打つことができます。一般的には、辺を取ることはリスクが伴いますが、正しく活用することで大きなメリットを得ることができます。
-                    </p>
-                    <p class="text-zinc-400">
-                        辺を取る際には、相手の次の手を制限するように石を置くことが重要です。たとえば、隅に近い辺を取ることで、相手に隅を取らせないようにすることが可能です。また、辺を取ることで相手の手数を減らし、自分の手数を増やす戦略もあります。
-                    </p>
-                </div>
-            </div>
-
-            <div class="mb-8 py-4 bg-zinc-900 overflow-hidden border border-zinc-800 sm:rounded">
-                <div class="sm:pt-4 sm:pr-4 pt-8 px-4">
-                    <h2 class="mb-4 text-lg text-zinc-200 font-bold">Ⅴ、まとめ</h2>
-                    <ol class="pt-8 pb-16 text-zinc-400 list-decimal ml-6 leading-10">
+                    <h2 class="mb-4 text-lg text-zinc-200 font-bold">Ⅳ、まとめ</h2>
+                    <ol class="pt-8 pb-8 text-zinc-400 list-decimal ml-6 leading-10">
                         <li>隅を取ることと手数を確保することを心がける。</li>
                         <li>序盤に大量の石を取らず、一手返しを心がけて壁を作らないようにする。</li>
-                        <li>効果的な中割りや、だんご石などを考慮しながら次の手を考える。</li>
-                        <li>天王山は先に打つ。</li>
-                        <li>余裕が出てきたら、3手先を考えて打つ（相手の置く場所や次に自分が置く場所を予測する）。</li>
-                        <li>辺に置くのは他に良い手が見つからないときにし、単独C打ちは避ける。</li>
-                        <li>ウィングの形はできるだけ避ける。ただし、手数を確保するために必要な場合は手数を優先する。</li>
+                        <li>効果的な中割りや引っぱりなどを考慮しながら次の手を考える。</li>
                     </ol>
                 </div>
             </div>
