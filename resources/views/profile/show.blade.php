@@ -126,15 +126,7 @@
                                                 </a>
                                             </h2>
                                             <div>
-                                                @if (!empty($post->tags))
-                                                    <ul class="flex flex-wrap my-2">
-                                                        @foreach ($post->tags as $tag)
-                                                            <li class="mr-1 my-1 px-2 rounded bg-zinc-700 text-zinc-400 text-sm whitespace-nowrap">
-                                                                {{ $tag->name }}
-                                                            </li>
-                                                        @endforeach
-                                                    </ul>
-                                                @endif
+                                                <x-navigation.tags :tags="$post->tags"></x-navigation.tags>
                                             </div>
                                         </div>
 

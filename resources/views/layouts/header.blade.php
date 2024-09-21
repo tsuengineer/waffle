@@ -9,7 +9,7 @@
                         <a href="{{ route('top.index') }}" class="flex items-center">
                             <img src="{{ asset('images/logo.png') }}" class="block h-9 w-auto fill-current text-gray-800" alt="ロゴ">
                             <div class="flex flex-col pl-2">
-                                <p class="font-bold">わっふる(β版)</p>
+                                <p class="font-bold">わっふる</p>
                                 <p class="text-xs text-zinc-400">棋譜共有サイト</p>
                             </div>
                         </a>
@@ -96,6 +96,9 @@
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 pt-2 pb-3 space-y-1 bg-zinc-800">
                 <x-responsive-nav-link :href="route('top.index')" :active="request()->routeIs('top.index')">
                     トップ
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('search.index')" :active="request()->routeIs('search.index')">
+                    棋譜検索
                 </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('board.index')" :active="request()->routeIs('board.index')">
                     棋譜ビューワー

@@ -27,6 +27,11 @@ Breadcrumbs::for('post.edit', fn(BreadcrumbsTrail $trail) => [
     $trail->push('棋譜編集')
 ]);
 
+Breadcrumbs::for('search.index', fn(BreadcrumbsTrail $trail) => [
+    $trail->parent('top.index'),
+    $trail->push('検索')
+]);
+
 Breadcrumbs::for('board.index', fn(BreadcrumbsTrail $trail) => [
     $trail->parent('top.index'),
     $trail->push('棋譜ビューワー')

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\TopController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\XotController;
@@ -34,6 +35,9 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
 Route::get('/posts/{ulid}', [PostController::class, 'show'])->name('posts.show');
+
+// 検索
+Route::get('/search', [SearchController::class, 'index'])->name('search.index');
 
 // オセロ盤
 Route::get('/board', fn() => view('board.index'))->name('board.index');

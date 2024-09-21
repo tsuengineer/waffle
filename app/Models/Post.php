@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -39,5 +40,18 @@ class Post extends Model
     public function comments(): HasMany
     {
         return $this->hasMany(Comment::class);
+    }
+
+    public function scopeSearchPosts(Builder $query, array $searchData)
+    {
+        return $query->with('user', 'user.avatars')
+            ->where(function ($query) use ($searchData) {
+                $query->where('title', 'like', "%{$searchData['keyword']}%");
+            })
+            ->when($searchData['tag'], function ($query) use ($searchData) {
+                $query->whereHas('tags', function ($query) use ($searchData) {
+                    $query->where('name', $searchData['tag']);
+                });
+            });
     }
 }
