@@ -61,13 +61,13 @@
                     </div>
 
                     @if (!empty($post->tags))
-                        <div class="flex my-2">
+                        <ul class="flex flex-wrap my-2">
                             @foreach ($post->tags as $tag)
-                                <div class="mr-1 px-2 rounded bg-zinc-700 text-zinc-400 text-sm">
+                                <li class="mr-1 my-1 px-2 rounded bg-zinc-700 text-zinc-400 text-sm whitespace-nowrap">
                                     {{ $tag->name }}
-                                </div>
+                                </li>
                             @endforeach
-                        </div>
+                        </ul>
                     @endif
 
                     @if (!empty($post['begin_text']))
